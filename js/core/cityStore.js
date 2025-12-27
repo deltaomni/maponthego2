@@ -15,7 +15,7 @@ export async function initCityStore() {
     const res = await fetch(path);
 
     const contentType = res.headers.get('content-type') || '';
-
+    console.log(res.toString())
     if (!res.ok || !contentType.includes('application/json') || res.includes('<!DOCTYPE html>')) {
       throw new Error(`Cidade inválida ou inexistente: ${citySlug}`);
     }
@@ -38,4 +38,5 @@ export async function initCityStore() {
 export function getCity() {
   return cityData;
 }
+
 
