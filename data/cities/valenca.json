@@ -1,0 +1,16 @@
+{
+  "cidade": "Valença",
+  "uf": "RJ",
+  "slug": "valenca",
+  "center": [ -43.70080407248682, -22.245876659868653 ],
+  "categorias": [
+    {
+      "id": "SALAO",
+      "label": "Salões de Beleza",
+      "icon": "scissors"
+    }
+  ],
+  "negocios": [
+
+  ]
+}

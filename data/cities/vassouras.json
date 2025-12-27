@@ -1,0 +1,16 @@
+{
+  "cidade": "Vassouras",
+  "uf": "RJ",
+  "slug": "vassouras",
+  "center": [ -43.661090000098156, -22.409420580419795 ],
+  "categorias": [
+    {
+      "id": "SALAO",
+      "label": "Salões de Beleza",
+      "icon": "scissors"
+    }
+  ],
+  "negocios": [
+
+  ]
+}

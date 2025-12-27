@@ -1,0 +1,16 @@
+{
+  "cidade": "Paraíba do Sul",
+  "uf": "RJ",
+  "slug": "paraiba-do-sul",
+  "center": [ -43.29204216222903, -22.162972128638796 ],
+  "categorias": [
+    {
+      "id": "SALAO",
+      "label": "Salões de Beleza",
+      "icon": "scissors"
+    }
+  ],
+  "negocios": [
+
+  ]
+}

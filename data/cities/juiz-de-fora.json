@@ -1,0 +1,16 @@
+{
+  "cidade": "Juiz de Fora",
+  "uf": "MG",
+  "slug": "juiz-de-fora",
+  "center": [ -43.347646421149825, -21.759927252568797 ],
+  "categorias": [
+    {
+      "id": "SALAO",
+      "label": "Salões de Beleza",
+      "icon": "scissors"
+    }
+  ],
+  "negocios": [
+
+  ]
+}

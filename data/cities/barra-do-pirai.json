@@ -1,0 +1,16 @@
+{
+  "cidade": "Barra do Piraí",
+  "uf": "RJ",
+  "slug": "barra-do-pirai",
+  "center": [ -43.824799644547426, -22.468820693678687 ],
+  "categorias": [
+    {
+      "id": "SALAO",
+      "label": "Salões de Beleza",
+      "icon": "scissors"
+    }
+  ],
+  "negocios": [
+
+  ]
+}

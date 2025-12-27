@@ -1,0 +1,16 @@
+{
+  "cidade": "Paty do Alferes",
+  "uf": "RJ",
+  "slug": "paty-do-alferes",
+  "center": [ -43.42236055426221, -22.42727027442673 ],
+  "categorias": [
+    {
+      "id": "SALAO",
+      "label": "Salões de Beleza",
+      "icon": "scissors"
+    }
+  ],
+  "negocios": [
+
+  ]
+}

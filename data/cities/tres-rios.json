@@ -1,0 +1,187 @@
+{
+  "cidade": "Três Rios",
+  "uf": "RJ",
+  "slug": "tres-rios",
+  "center": [ -43.2096, -22.1165 ],
+  "categorias": [
+    {
+      "id": "SALAO",
+      "label": "Salões de Beleza",
+      "icon": "scissors"
+    }
+  ],
+  "negocios": [
+    {
+      "id": "lapher-hair",
+      "slug": "lapher-hair",
+      "nome": "Lapher Hair",
+      "categoria": "SALAO",
+      "premium": true,
+      "coords": [ -43.2092934, -22.1147502 ],
+      "endereco": "Galeria Central - Tv. Augusto de Almeida, 44 - Três Rios, RJ",
+      "telefone": "(24) 98178-5240",
+      "rating": 5.0,
+      "descricao": "Especializados em cortes e coloração de cabelos cacheados.",
+      "logo": "img/logos/lapherhair.jpg",
+      "website": {
+        "type": "internal",
+        "template": "default"
+      },
+      "integrations": {
+        "googlePlaceId": "ChIJuXEwh8f3mAARI1E4GAmZLeo"
+      }
+    },
+    {
+      "id": "studio-virtuosa",
+      "slug": "studio-virtuosa",
+      "nome": "Studio Virtuosa",
+      "categoria": "SALAO",
+      "premium": false,
+      "coords": [ -43.2084383, -22.1130642 ],
+      "endereco": "Tv. Dr. Bezerra, 93 - Três Rios, RJ",
+      "telefone": "(24) 99295-6673",
+      "rating": 4.9,
+      "descricao": "Atendimento personalizado com foco em estética e bem-estar.",
+      "website": {
+        "type": "internal",
+        "template": "basic"
+      },
+      "integrations": {
+        "googlePlaceId": "ChIJiZ_KY6z1mAARE1RKmzsODJo"
+      }
+    },
+    {
+      "id": "paty-castro-salao",
+      "slug": "paty-castro-salao",
+      "nome": "PATY CASTRO Salão de Beleza",
+      "categoria": "SALAO",
+      "premium": false,
+      "coords": [ -43.209192, -22.112596 ],
+      "endereco": "R. Maçonaria, 75 - 3o. andar - Três Rios, RJ",
+      "telefone": "(24) 98845-6875",
+      "rating": 4.7,
+      "descricao": "Serviços completos de beleza para todas as idades.",
+      "website": {
+        "type": "internal",
+        "template": "basic"
+      },
+      "integrations": {
+        "googlePlaceId": "ChIJifoDoX_2mAARpjEytiq6RMg"
+      }
+    },
+    {
+      "id": "espaco-hair-priscila-carvalhais",
+      "slug": "espaco-hair-priscila-carvalhais",
+      "nome": "Espaço Hair Priscila Carvalhais",
+      "categoria": "SALAO",
+      "premium": false,
+      "coords": [ -43.20955, -22.114623 ],
+      "endereco": "R. Rita Cerqueira, 36 - Centro - Três Rios, RJ",
+      "telefone": "(32) 99955-9732",
+      "rating": 5.0,
+      "descricao": "Especialista em cuidados capilares e tratamentos personalizados.",
+      "website": {
+        "type": "internal",
+        "template": "basic"
+      },
+      "integrations": {
+        "googlePlaceId": "ChIJ-2B7fJfzmAARUVhlveBXgFE"
+      }
+    },
+    {
+      "id": "studio-creisis-lima",
+      "slug": "studio-creisis-lima",
+      "nome": "Studio Creísis Lima",
+      "categoria": "SALAO",
+      "premium": false,
+      "coords": [ -43.209144, -22.1131874 ],
+      "endereco": "Praça Salim Chimelli, 56 - Três Rios, RJ",
+      "telefone": "(32) 99800-0265",
+      "rating": 5.0,
+      "descricao": "Atendimento focado em estética, estilo e autoestima.",
+      "website": {
+        "type": "internal",
+        "template": "basic"
+      },
+      "integrations": {
+        "googlePlaceId": "ChIJTQhB3-r1mAARfbRQZolRDwE"
+      }
+    },
+    {
+      "id": "espaco-mulher-beleza-estetica",
+      "slug": "espaco-mulher-beleza-estetica",
+      "nome": "Espaço Mulher Beleza e Estética",
+      "categoria": "SALAO",
+      "premium": false,
+      "coords": [ -43.2101067, -22.1153935 ],
+      "endereco": "Rua Barão do Rio Branco - Três Rios, RJ",
+      "telefone": "(24) 98842-0125",
+      "rating": 5.0,
+      "descricao": "Beleza e estética com foco no cuidado feminino.",
+      "website": {
+        "type": "internal",
+        "template": "basic"
+      },
+      "integrations": {
+        "googlePlaceId": "ChIJU1LvYAD3mAARksvkX_cKJrM"
+      }
+    },
+    {
+      "id": "estudio-leticia-prata",
+      "slug": "estudio-leticia-prata",
+      "nome": "Estúdio Leticia Prata",
+      "categoria": "SALAO",
+      "premium": false,
+      "coords": [ -43.2065515, -22.1164375 ],
+      "endereco": "R. Sete de Setembro, 277 - Três Rios, RJ",
+      "telefone": "(24) 98838-9718",
+      "rating": 5.0,
+      "descricao": "Especializada em cortes modernos e atendimento exclusivo.",
+      "website": {
+        "type": "internal",
+        "template": "basic"
+      },
+      "integrations": {
+        "googlePlaceId": "ChIJWe8svNv3mAAR0LnL43c3WIc"
+      }
+    },
+    {
+      "id": "salao-jeane-amanda",
+      "slug": "salao-jeane-amanda",
+      "nome": "Salão Jeane e Amanda Designer da Beleza",
+      "categoria": "SALAO",
+      "premium": false,
+      "coords": [ -43.2209644, -22.1078111 ],
+      "endereco": "R. Renato Cardoso de Miranda, 497 - Trê sRios, RJ",
+      "telefone": "(24) 98834-6447",
+      "rating": 4.7,
+      "descricao": "Design de beleza com atendimento acolhedor.",
+      "website": {
+        "type": "internal",
+        "template": "basic"
+      },
+      "integrations": {
+        "googlePlaceId": "ChIJRWO7skT1mAARYdDLDHCjeak"
+      }
+    },
+    {
+      "id": "espaco-beleza-vanessa-duarte",
+      "slug": "espaco-beleza-vanessa-duarte",
+      "nome": "Espaço da Beleza Vanessa Duarte",
+      "categoria": "SALAO",
+      "premium": false,
+      "coords": [ -43.2171272, -22.1021283 ],
+      "endereco": "R. Washington Luiz, 230 - Três Rios, RJ",
+      "telefone": "(24) 98825-5790",
+      "rating": 5.0,
+      "descricao": "Espaço dedicado à beleza e estética feminina.",
+      "website": {
+        "type": "internal",
+        "template": "basic"
+      },
+      "integrations": {
+        "googlePlaceId": "ChIJV74Al5X1mAARB2oM5VsJu54"
+      }
+    }
+  ]
+}
