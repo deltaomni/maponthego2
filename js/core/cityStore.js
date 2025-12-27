@@ -14,20 +14,27 @@ export async function initCityStore() {
   try {
     const res = await fetch(path);
 
-    const contentType = res.headers.get('content-type') || '';
-    console.log(res.toString())
-    if (!res.ok || !contentType.includes('application/json') || res.includes('<!DOCTYPE html>')) {
+    const rawText = await res.text();
+
+    // 🛑 Detecta HTML (Netlify SPA fallback)
+    if (
+      !res.ok ||
+      rawText.trim().startsWith('<!DOCTYPE') ||
+      rawText.trim().startsWith('<html')
+    ) {
       throw new Error(`Cidade inválida ou inexistente: ${citySlug}`);
     }
 
-    cityData = await res.json();
+    // ✅ Agora sim: JSON válido
+    cityData = JSON.parse(rawText);
 
     console.log('[cityStore] cidade carregada:', cityData);
 
     eventBus.emit('city:loaded', cityData);
 
   } catch (err) {
-    console.error('[cityStore]', err);
+    console.error('[cityStore]', err.message);
+
     eventBus.emit('city:error', {
       slug: citySlug,
       error: err.message
@@ -38,5 +45,3 @@ export async function initCityStore() {
 export function getCity() {
   return cityData;
 }
-
-
