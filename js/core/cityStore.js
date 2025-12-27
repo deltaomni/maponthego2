@@ -14,8 +14,10 @@ export async function initCityStore() {
   try {
     const res = await fetch(path);
 
-    if (!res.ok) {
-      throw new Error(`Cidade não encontrada: ${citySlug}`);
+    const contentType = res.headers.get('content-type') || '';
+
+    if (!res.ok || !contentType.includes('application/json')) {
+      throw new Error(`Cidade inválida ou inexistente: ${citySlug}`);
     }
 
     cityData = await res.json();
@@ -26,7 +28,10 @@ export async function initCityStore() {
 
   } catch (err) {
     console.error('[cityStore]', err);
-    eventBus.emit('city:error', err);
+    eventBus.emit('city:error', {
+      slug: citySlug,
+      error: err.message
+    });
   }
 }
 
