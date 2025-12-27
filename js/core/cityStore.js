@@ -16,7 +16,7 @@ export async function initCityStore() {
 
     const contentType = res.headers.get('content-type') || '';
 
-    if (!res.ok || !contentType.includes('application/json')) {
+    if (!res.ok || !contentType.includes('application/json') || res.includes('<!DOCTYPE html>')) {
       throw new Error(`Cidade inválida ou inexistente: ${citySlug}`);
     }
 
@@ -38,3 +38,4 @@ export async function initCityStore() {
 export function getCity() {
   return cityData;
 }
+
