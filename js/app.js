@@ -1,10 +1,22 @@
-import { initCityStore } from './core/cityStore.js';
-import { eventBus } from './core/eventBus.js';
+import { isMainDomain } from './core/config.js';
 
 (async function bootstrap() {
-  console.log('[app] bootstrap');
 
+  // 🔐 DOMÍNIO DE CLIENTE → NEGÓCIO
+  if (!isMainDomain()) {
+    // evita loop
+    if (!location.pathname.startsWith('/negocio')) {
+      location.replace('/negocio/index.html');
+    }
+    return;
+  }
+
+  // 🗺️ DOMÍNIO PRINCIPAL → MAPA
+  const { initCityStore } = await import('./core/cityStore.js');
   await initCityStore();
 
-  eventBus.emit('app:ready');
+  console.log('[app] mapa inicializado');
+
 })();
+
+
