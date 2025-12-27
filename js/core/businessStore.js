@@ -1,13 +1,17 @@
 import { eventBus } from './eventBus.js';
 
 export function initBusinessStore() {
-  const params = new URLSearchParams(location.search);
-  const slug = params.get('site') || 'desconhecido';
+  const host = location.hostname;
 
-  console.log('[businessStore] slug:', slug);
+  // slug provisório
+  const slug = host.split('.')[0];
 
-  document.getElementById('business-root').innerText =
-    `Negócio carregado: ${slug}`;
+  console.log('[businessStore] negócio:', slug);
+
+  const root = document.getElementById('business-root');
+  if (root) {
+    root.innerText = `Site do negócio: ${slug}`;
+  }
 
   eventBus.emit('business:ready', { slug });
 }
