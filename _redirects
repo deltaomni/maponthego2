@@ -1,0 +1,18 @@
+/*  /index.html  200
+
+# ============================
+# MAPONTHEGO (SPA)
+# ============================
+#/              /index.html    200
+#/index.html    /index.html    200
+
+# ============================
+# NEGÓCIO (SPA independente)
+# ============================
+#/negocio       /negocio/index.html 200
+#/negocio/*     /negocio/index.html 200
+
+# ============================
+# DOMÍNIOS DE CLIENTES
+# ============================
+#/*             /negocio/index.html 200
