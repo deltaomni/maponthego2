@@ -1,0 +1,39 @@
+/MapOnTheGo
+│
+├── index.html                 # mapa + legenda
+├── _redirects                 # Netlify (deep links)
+│
+├── /negocio
+│   ├── index.html             # site dinâmico (entry-point)
+│   ├── negocio.css
+│   └── negocio.js
+│
+├── /data
+│   └── cities/
+│       └── tres-rios.json     # JSON canônico
+│
+├── /js
+│   │
+│   ├── core/
+│   │   ├── cityStore.js
+│   │   ├── businessStore.js   # 🔥 NOVO (foco em /negocio)
+│   │   ├── eventBus.js
+│   │   └── config.js
+│   │
+│   ├── map/
+│   │   ├── mapInit.js
+│   │   ├── poiLayer.js
+│   │   └── poiPopup.js
+│   │
+│   ├── legend/
+│   │   ├── legendInit.js
+│   │   └── legendEvents.js
+│   │
+│   ├── modal/
+│   │   ├── modalController.js
+│   │   └── siteRenderer.js    # 🔁 usa /negocio/index.html
+│   │
+│   └── app.js
+│
+└── /css
+    └── motg-base.css
