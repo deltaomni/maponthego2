@@ -82,7 +82,7 @@ html, body {
     }
 
         .property .icon svg {
-            height: 20px;
+            height: 15px;
             width: auto;
         }
 
@@ -228,6 +228,7 @@ html, body {
 
     .property::after {
         border-top-color: var(--poi-color);
+        z-index: -1;
     }
 
     .property.highlight {
@@ -242,3 +243,26 @@ html, body {
     .property.premium {
         box-shadow: 0 0 0 3px rgba(255,215,0,0.8);
     }
+
+        .property.premium .avatar {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            /*border: 2px solid*/
+        }
+
+        .property.premium.highlight .avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 10px;
+            /*border: 2px solid*/
+        }
+
+        .property.premium::after {
+            border-top-color: #ffc107; /*var(--poi-color);*/
+            z-index: -1;
+        }
+
+        .property.premium.highlight::after {
+            display:none;
+        }
