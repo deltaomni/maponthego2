@@ -7,7 +7,7 @@ export async function initCityStore() {
   const params = new URLSearchParams(location.search);
   const citySlug = params.get('city') || 'tres-rios';
 
-  const path = `/data/cities/${citySlug}.json`;
+  const path = `data/cities/${citySlug}.json`;
 
   console.log('[cityStore] carregando:', path);
 
@@ -45,3 +45,4 @@ export async function initCityStore() {
 export function getCity() {
   return cityData;
 }
+
