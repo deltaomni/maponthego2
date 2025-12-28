@@ -23,7 +23,12 @@ function initMap(city) {
         attribution: '© OpenStreetMap'
     }).addTo(map);
 
-    initPoiLayer(map, city.negocios);
+    // 🔥 AQUI ESTÁ A CHAVE
+    initPoiLayer(
+        map,
+        city.negocios,
+        city.categorias
+    );
 
     setTimeout(() => map.invalidateSize(), 0);
 }
