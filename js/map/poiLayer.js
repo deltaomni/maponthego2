@@ -1,16 +1,27 @@
-import { eventBus } from '../core/eventBus.js';
-import { getCity } from '../core/cityStore.js';
-
-let map;
 let activeCard = null;
 
-function addBusinessPOIs() {
-    const city = getCity();
-    if (!city || !city.negocios) return;
+function buildPOI(negocio, categoria) {
+    return `
+    <div class="property ${negocio.premium ? 'premium' : ''}"
+         style="--poi-color: ${categoria.color}">
+         
+        <div class="icon">
+            <i class="fa fa-${categoria.icon}"></i>
+        </div>
 
-    const categorias = city.categorias || {};
+        <div class="details">
+            <div class="price fw-bold">${negocio.nome}</div>
+            <div class="address">${negocio.endereco}</div>
+        </div>
+    </div>
+    `;
+}
 
-    city.negocios
+export function initPoiLayer(map, negocios, categorias) {
+
+    if (!map || !Array.isArray(negocios)) return;
+
+    negocios
         .filter(n =>
             n.poi?.enabled &&
             n.geo?.coords?.length === 2
@@ -57,13 +68,3 @@ function addBusinessPOIs() {
             });
         });
 }
-
-eventBus.on('map:ready', leafletMap => {
-    map = leafletMap;
-});
-
-eventBus.on('city:loaded', () => {
-    addBusinessPOIs();
-});
-
-
