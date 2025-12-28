@@ -1,6 +1,6 @@
 import { isMainDomain } from './core/config.js';
 import { eventBus } from './core/eventBus.js';
-import { initMap } from './views/mapView.js';
+import { initMap } from './map/mapView.js';
 
 (async function bootstrap() {
 
@@ -24,3 +24,4 @@ import { initMap } from './views/mapView.js';
 
     await initCityStore();
 })();
+
