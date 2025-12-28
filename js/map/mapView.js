@@ -4,12 +4,13 @@ let map;
 let markers = [];
 
 export function initMap(city) {
-    map = L.map('map', {
-        zoomControl: false
-    }).setView(
-        [city.center.lat, city.center.lng],
-        city.zoom || 14
-    );
+map = L.map('map', {
+    zoomControl: false
+}).setView(
+    city.center,
+    city.zoom || 14
+);
+
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '© OpenStreetMap'
