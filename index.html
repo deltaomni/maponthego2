@@ -30,6 +30,21 @@
           position: fixed;
           inset: 0;
           z-index: 1;
+          left: 380px;
+        }
+
+        @media (min-width: 992px) {
+          #legendOffcanvas {
+            transform: none !important;
+            visibility: visible !important;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 380px;
+            height: 100%;
+            border-right: 1px solid #ddd;
+            z-index: 1000;
+          }
         }
 
 
@@ -157,4 +172,5 @@
 
 </body>
 </html>
+
 
