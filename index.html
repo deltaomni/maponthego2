@@ -19,32 +19,33 @@
     <!-- Font Awesome -->
     <script src="https://use.fontawesome.com/releases/v6.2.0/js/all.js"></script>
 
-    <style>
+     <link href="css/motg-base.css" rel="stylesheet" />
+    <!--<style>
         html, body {
-          height: 100%;
-          margin: 0;
-          overflow: hidden;
+            height: 100%;
+            margin: 0;
+            overflow: hidden;
         }
-        
+
         #map {
-          position: fixed;
-          inset: 0;
-          z-index: 1;
-          /* left: 380px; */
+            position: fixed;
+            inset: 0;
+            z-index: 1;
+            left: 380px;
         }
 
         @media (min-width: 992px) {
-          #legendOffcanvas {
-            transform: none !important;
-            visibility: visible !important;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 380px;
-            height: 100%;
-            border-right: 1px solid #ddd;
-            z-index: 1000;
-          }
+            #legendOffcanvas {
+                transform: none !important;
+                visibility: visible !important;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 380px;
+                height: 100%;
+                border-right: 1px solid #ddd;
+                z-index: 1000;
+            }
         }
 
 
@@ -70,39 +71,39 @@
             transition: all .3s ease;
         }
 
-        .property::after {
-            content: '';
-            position: absolute;
-            top: 100%;
-            left: 50%;
-            transform: translateX(-50%);
-            border-left: 8px solid transparent;
-            border-right: 8px solid transparent;
-            border-top: 8px solid #7b1fa2;
-        }
+            .property::after {
+                content: '';
+                position: absolute;
+                top: 100%;
+                left: 50%;
+                transform: translateX(-50%);
+                border-left: 8px solid transparent;
+                border-right: 8px solid transparent;
+                border-top: 8px solid #7b1fa2;
+            }
 
-        .property.highlight {
-            background: white;
-            color: #333;
-            border-radius: 8px;
-            padding: 8px 12px;
-            width: auto;
-            min-width: 200px;
-            box-shadow: 0 10px 25px rgba(0,0,0,.25);
-        }
+            .property.highlight {
+                background: white;
+                color: #333;
+                border-radius: 8px;
+                padding: 8px 12px;
+                width: auto;
+                min-width: 200px;
+                box-shadow: 0 10px 25px rgba(0,0,0,.25);
+            }
 
-        .property.highlight::after {
-            border-top-color: white;
-        }
+                .property.highlight::after {
+                    border-top-color: white;
+                }
 
-        .property .details {
-            display: none;
-            margin-left: 10px;
-        }
+            .property .details {
+                display: none;
+                margin-left: 10px;
+            }
 
-        .property.highlight .details {
-            display: block;
-        }
+            .property.highlight .details {
+                display: block;
+            }
 
         /* =========================
            Botão da legenda
@@ -120,7 +121,7 @@
                 height: 70vh;
             }
         }
-    </style>
+    </style>-->
 </head>
 
 <body>
@@ -171,6 +172,7 @@
 
 </body>
 </html>
+
 
 
 
