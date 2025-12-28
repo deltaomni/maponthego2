@@ -1,47 +1,88 @@
 import { eventBus } from '../core/eventBus.js';
+import { cityStore } from '../core/cityStore.js';
 
 let map;
-let markers = [];
+let activeCard = null;
 
-export function initPoiLayer(leafletMap, negocios = []) {
-    map = leafletMap;
-    renderPOIs(negocios);
+function buildPOI(negocio, categoria) {
+    return `
+    <div class="property ${negocio.premium ? 'premium' : ''}"
+         style="--poi-color: ${categoria.color}">
+         
+        <div class="icon">
+            <i class="fa fa-${categoria.icon}"></i>
+        </div>
+
+        <div class="details">
+            <div class="price fw-bold">${negocio.nome}</div>
+            <div class="address">${negocio.endereco}</div>
+        </div>
+    </div>
+    `;
 }
 
-function renderPOIs(negocios) {
-    clearMarkers();
+function addBusinessPOIs() {
+    const city = cityStore.getCity();
+    if (!city || !city.negocios) return;
 
-    negocios.forEach(negocio => {
-        if (!negocio.lat || !negocio.lng) return;
+    const categorias = city.categorias || {};
 
-        const marker = L.marker([negocio.lat, negocio.lng], {
-            icon: buildIcon(negocio)
-        }).addTo(map);
+    city.negocios
+        .filter(n =>
+            n.poi?.enabled &&
+            n.geo?.coords?.length === 2
+        )
+        .forEach(negocio => {
 
-        marker.on('click', () => {
-            eventBus.emit('poi:click', negocio);
+            const categoria = categorias[negocio.categoria];
+            if (!categoria) return;
+
+            const [lat, lng] = negocio.geo.coords;
+
+            const icon = L.divIcon({
+                html: buildPOI(negocio, categoria),
+                className: '',
+                iconSize: [30, 30],
+                iconAnchor: [15, 30]
+            });
+
+            const marker = L.marker([lat, lng], { icon }).addTo(map);
+
+            marker.on('click', () => {
+                const el = marker.getElement().querySelector('.property');
+                const latlng = marker.getLatLng();
+                const willOpen = !el.classList.contains('highlight');
+
+                if (activeCard && activeCard !== el) {
+                    activeCard.classList.remove('highlight');
+                }
+
+                if (willOpen) {
+                    map.panTo(latlng, { animate: true });
+
+                    setTimeout(() => {
+                        el.classList.add('highlight');
+                        marker.setZIndexOffset(1000);
+                        activeCard = el;
+                    }, 200);
+
+                } else {
+                    el.classList.remove('highlight');
+                    marker.setZIndexOffset(0);
+                    activeCard = null;
+                }
+            });
         });
-
-        markers.push(marker);
-    });
 }
 
-function clearMarkers() {
-    markers.forEach(m => map.removeLayer(m));
-    markers = [];
-}
+/* =========================
+   EVENTOS
+========================= */
 
-function buildIcon(negocio) {
-    return L.divIcon({
-        className: '',
-        html: `
-          <div class="property">
-            <div class="icon">
-              <i class="fa-solid fa-location-dot"></i>
-            </div>
-          </div>
-        `,
-        iconSize: [30, 30],
-        iconAnchor: [15, 30]
-    });
-}
+eventBus.on('map:ready', leafletMap => {
+    map = leafletMap;
+});
+
+eventBus.on('city:loaded', () => {
+    addBusinessPOIs();
+});
