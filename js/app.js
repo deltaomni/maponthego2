@@ -1,9 +1,14 @@
 import { isMainDomain } from './core/config.js';
-import { eventBus } from './core/eventBus.js';
-import { initMap } from './map/mapView.js';
+
+// ⚠️ IMPORTANTE:
+// apenas importar módulos que se auto-registram no eventBus
+import './map/mapInit.js';
+import './legend/legendInit.js';
+import './modal/modalController.js';
 
 (async function bootstrap() {
 
+    // 🔐 DOMÍNIO DE CLIENTE → SITE DO NEGÓCIO
     if (!isMainDomain()) {
         if (!location.pathname.startsWith('/negocio')) {
             location.replace('/negocio/index.html');
@@ -11,17 +16,8 @@ import { initMap } from './map/mapView.js';
         return;
     }
 
-    const { initCityStore, getCity } = await import('./core/cityStore.js');
-
-    eventBus.on('city:loaded', city => {
-        initMap(city);           // 🗺️ mapa + POIs
-        buildLegend();           // 🎯 legado V1
-    });
-
-    eventBus.on('poi:click', negocio => {
-        openBusinessModal(negocio.id);
-    });
+    // 🗺️ DOMÍNIO PRINCIPAL → MAPA
+    const { initCityStore } = await import('./core/cityStore.js');
 
     await initCityStore();
 })();
-
