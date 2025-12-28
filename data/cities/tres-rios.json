@@ -11,10 +11,44 @@
       "id": "SALAO",
       "label": "Salões de Beleza",
       "icon": "scissors",
-      "color": "#E91E63"
+      "color": "#f2efe9",
+      "colorOpen": "#d63384"
     }
   },
   "negocios": [
+    {
+      "id": "lapher-hair",
+      "slug": "lapher-hair",
+      "nome": "Lapher Hair",
+      "categoria": "SALAO",
+      "premium": true,
+      "logobase64": "data:image/jpeg;base64,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",
+      "descricao": "",
+      "telefone": "(24) 98178-5240",
+      "rating": 5,
+      "endereco": "Galeria Central - Tv. Augusto de Almeida, n° 44 - Três Rios, RJ, 25804-130, Brazil",
+      "geo": {
+        "coords": [
+          -22.1147502,
+          -43.2092934
+        ],
+        "googlePlaceId": "ChIJuXEwh8f3mAARI1E4GAmZLeo"
+      },
+      "poi": {
+        "enabled": true,
+        "cta": "Ver negócio"
+      },
+      "website": {
+        "enabled": false,
+        "type": "none",
+        "template": null,
+        "media": {
+          "header": null,
+          "portfolio": []
+        }
+      }
+    },
+
     {
       "id": "studio-virtuosa",
       "slug": "studio-virtuosa",
@@ -248,37 +282,6 @@
           -43.2209644
         ],
         "googlePlaceId": "ChIJRWO7skT1mAARYdDLDHCjeak"
-      },
-      "poi": {
-        "enabled": true,
-        "cta": "Ver negócio"
-      },
-      "website": {
-        "enabled": false,
-        "type": "none",
-        "template": null,
-        "media": {
-          "header": null,
-          "portfolio": []
-        }
-      }
-    },
-    {
-      "id": "lapher-hair",
-      "slug": "lapher-hair",
-      "nome": "Lapher Hair",
-      "categoria": "SALAO",
-      "premium": false,
-      "descricao": "",
-      "telefone": "(24) 98178-5240",
-      "rating": 5,
-      "endereco": "Galeria Central - Tv. Augusto de Almeida, n° 44 - Três Rios, RJ, 25804-130, Brazil",
-      "geo": {
-        "coords": [
-          -22.1147502,
-          -43.2092934
-        ],
-        "googlePlaceId": "ChIJuXEwh8f3mAARI1E4GAmZLeo"
       },
       "poi": {
         "enabled": true,
