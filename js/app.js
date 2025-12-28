@@ -1,5 +1,7 @@
 import { isMainDomain } from './core/config.js';
 import { eventBus } from './core/eventBus.js';
+await import('./map/mapView.js');
+
 
 (async function bootstrap() {
   // 🔐 DOMÍNIO DE CLIENTE → NEGÓCIO
@@ -20,3 +22,4 @@ import { eventBus } from './core/eventBus.js';
   await initCityStore();
 
 })();
+
