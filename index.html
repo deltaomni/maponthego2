@@ -21,14 +21,17 @@
 
     <style>
         html, body {
-            height: 100%;
-            margin: 0;
+          height: 100%;
+          margin: 0;
+          overflow: hidden;
+        }
+        
+        #map {
+          position: fixed;
+          inset: 0;
+          z-index: 1;
         }
 
-        #map {
-            height: 100vh;
-            width: 100%;
-        }
 
         /* Leaflet */
         .leaflet-div-icon {
@@ -154,3 +157,4 @@
 
 </body>
 </html>
+
