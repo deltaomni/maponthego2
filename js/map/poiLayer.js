@@ -1,41 +1,57 @@
-// /js/map/poiLayer.js
 import { eventBus } from '../core/eventBus.js';
 
 let activeMarker = null;
 
 /**
  * Inicializa os POIs de negócios no mapa.
- * @param {L.Map} map 
- * @param {Array} negocios 
+ * @param {L.Map} map
+ * @param {Array} negocios
+ * @param {Object} categorias
  */
-export function initPoiLayer(map, negocios) {
+export function initPoiLayer(map, negocios, categorias) {
 
     negocios.forEach(negocio => {
         if (!negocio.poi?.enabled) return;
 
-        const categoria = negocio.categoria; // categoria string
-        const iconHTML = negocio.premium && negocio.logo
-            ? `<img src="${negocio.logo}" class="avatar" />`
-            : `<i class="fa fa-${negocio.categoria.toLowerCase()}"></i>`;
+        const categoriaId = negocio.categoria;
+        const categoria = categorias[categoriaId];
 
+        if (!categoria) {
+            console.warn('[poiLayer] categoria não encontrada:', categoriaId);
+            return;
+        }
+
+        const iconHTML = resolveIconHTML(negocio, categoria);
         const html = buildPOIContent(negocio, iconHTML);
 
         const icon = L.divIcon({
             html,
-            className: '', // evita CSS padrão do Leaflet
+            className: '',
             iconSize: [32, 32],
             iconAnchor: [16, 32]
         });
 
         const marker = L.marker(negocio.geo.coords, { icon }).addTo(map);
-
         marker.on('click', () => handleMarkerClick(marker, negocio, map));
+
     });
 }
 
-/**
- * Monta o conteúdo HTML do POI
- */
+function resolveIconHTML(negocio, categoria) {
+
+    // Premium com logotipo
+    if (negocio.premium && negocio.logobase64) {
+        return `<img src="${negocio.logobase64}" class="avatar" />`;
+    }
+
+    // Ícone da categoria
+    return `
+        <i class="fa fa-${categoria.icon}"
+           style="color:${categoria.color}">
+        </i>
+    `;
+}
+
 function buildPOIContent(negocio, iconHTML) {
     return `
     <div class="property ${negocio.premium ? 'premium' : ''}">
@@ -46,17 +62,31 @@ function buildPOIContent(negocio, iconHTML) {
             <div class="name">${negocio.nome}</div>
             <div class="address">${shortAddress(negocio.endereco)}</div>
             <div class="actions">
-                ${negocio.website?.enabled ? `<a href="${negocio.website.url}" target="_blank" class="btn btn-sm btn-outline-primary">Website</a>` : ''}
-                ${negocio.telefone ? `<a href="https://wa.me/${formatPhone(negocio.telefone)}" target="_blank" class="btn btn-sm btn-success">WhatsApp</a>` : ''}
+                ${negocio.website?.enabled
+            ? `<button class="btn btn-sm btn-outline-primary js-open-website"
+                              data-slug="${negocio.slug}">
+                          Website
+                       </button>`
+            : ''
+        }
+                ${negocio.telefone
+            ? `<a href="https://wa.me/${formatPhone(negocio.telefone)}"
+                          target="_blank"
+                          class="btn btn-sm btn-light text-dark">
+                          <i class="fa-brands fa-whatsapp"></i>
+                       </a>`
+            : ''
+        }
             </div>
         </div>
     </div>
     `;
 }
 
+
 /**
- * Função utilitária para resumir endereço
- */
+* Função utilitária para resumir endereço
+*/
 function shortAddress(fullAddress) {
     const parts = fullAddress.split(' - ');
     return parts[0]; // retorna só a rua
