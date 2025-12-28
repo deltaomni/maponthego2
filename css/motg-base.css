@@ -9,7 +9,7 @@
             position: fixed;
             inset: 0;
             z-index: 1;
-            left: 380px;
+            /* left: 380px; */
         }
 
         @media (min-width: 992px) {
@@ -121,4 +121,5 @@
 .property.premium {
     box-shadow: 0 0 0 3px rgba(255,215,0,0.8);
 }
+
 
