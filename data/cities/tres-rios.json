@@ -1,6 +1,329 @@
 {
+  "cidade": "Três rios",
+  "uf": "RJ",
   "slug": "tres-rios",
-  "name": "Três Rios",
-  "state": "RJ",
-  "negocios": []
+  "center": [
+    -22.112563,
+    -43.210792
+  ],
+  "categorias": {
+    "SALAO": {
+      "id": "SALAO",
+      "label": "Salões de Beleza",
+      "icon": "scissors",
+      "color": "#E91E63"
+    }
+  },
+  "negocios": [
+    {
+      "id": "studio-virtuosa",
+      "slug": "studio-virtuosa",
+      "nome": "Studio Virtuosa",
+      "categoria": "SALAO",
+      "premium": false,
+      "descricao": "",
+      "telefone": "(24) 99295-6673",
+      "rating": 4.9,
+      "endereco": "Tv. Dr. Bezerra, 93 - Três Rios, RJ, 25806-420, Brazil",
+      "geo": {
+        "coords": [
+          -22.1130642,
+          -43.2084383
+        ],
+        "googlePlaceId": "ChIJiZ_KY6z1mAARE1RKmzsODJo"
+      },
+      "poi": {
+        "enabled": true,
+        "cta": "Ver negócio"
+      },
+      "website": {
+        "enabled": false,
+        "type": "none",
+        "template": null,
+        "media": {
+          "header": null,
+          "portfolio": []
+        }
+      }
+    },
+    {
+      "id": "paty-castro-salao-de-beleza",
+      "slug": "paty-castro-salao-de-beleza",
+      "nome": "PATY CASTRO Salão de Beleza",
+      "categoria": "SALAO",
+      "premium": false,
+      "descricao": "",
+      "telefone": "(24) 98845-6875",
+      "rating": 4.7,
+      "endereco": "R. Maçonaria, 75 - 3ºandar - Nova, Três Rios - RJ, 25805-022, Brazil",
+      "geo": {
+        "coords": [
+          -22.112596,
+          -43.209191999999994
+        ],
+        "googlePlaceId": "ChIJifoDoX_2mAARpjEytiq6RMg"
+      },
+      "poi": {
+        "enabled": true,
+        "cta": "Ver negócio"
+      },
+      "website": {
+        "enabled": false,
+        "type": "none",
+        "template": null,
+        "media": {
+          "header": null,
+          "portfolio": []
+        }
+      }
+    },
+    {
+      "id": "studio-giseli-aleixo",
+      "slug": "studio-giseli-aleixo",
+      "nome": "Studio Giseli Aleixo",
+      "categoria": "SALAO",
+      "premium": false,
+      "descricao": "",
+      "telefone": "(24) 99222-0737",
+      "rating": 5,
+      "endereco": "R. Duque de Caxias, 517 - sala 307 - Três Rios, RJ, 25802-120, Brazil",
+      "geo": {
+        "coords": [
+          -22.1156373,
+          -43.2075539
+        ],
+        "googlePlaceId": "ChIJNymUVan3mAARvKCHlCyqrQ4"
+      },
+      "poi": {
+        "enabled": true,
+        "cta": "Ver negócio"
+      },
+      "website": {
+        "enabled": false,
+        "type": "none",
+        "template": null,
+        "media": {
+          "header": null,
+          "portfolio": []
+        }
+      }
+    },
+    {
+      "id": "espaco-hair-priscila-carvalhais",
+      "slug": "espaco-hair-priscila-carvalhais",
+      "nome": "Espaço Hair Priscila Carvalhais",
+      "categoria": "SALAO",
+      "premium": false,
+      "descricao": "",
+      "telefone": "(32) 99955-9732",
+      "rating": 5,
+      "endereco": "R. Rita Cerqueira, 36 - sala 02 - Centro, Três Rios - RJ, 25870-000, Brazil",
+      "geo": {
+        "coords": [
+          -22.114622999999998,
+          -43.20955
+        ],
+        "googlePlaceId": "ChIJ-2B7fJfzmAARUVhlveBXgFE"
+      },
+      "poi": {
+        "enabled": true,
+        "cta": "Ver negócio"
+      },
+      "website": {
+        "enabled": false,
+        "type": "none",
+        "template": null,
+        "media": {
+          "header": null,
+          "portfolio": []
+        }
+      }
+    },
+    {
+      "id": "studio-creisis-lima",
+      "slug": "studio-creisis-lima",
+      "nome": "Studio Creísis Lima",
+      "categoria": "SALAO",
+      "premium": false,
+      "descricao": "",
+      "telefone": "(32) 99800-0265",
+      "rating": 5,
+      "endereco": "Praça Salim Chimelli, 56 - Três Rios, RJ, 25807-180, Brazil",
+      "geo": {
+        "coords": [
+          -22.113187399999997,
+          -43.209143999999995
+        ],
+        "googlePlaceId": "ChIJTQhB3-r1mAARfbRQZolRDwE"
+      },
+      "poi": {
+        "enabled": true,
+        "cta": "Ver negócio"
+      },
+      "website": {
+        "enabled": false,
+        "type": "none",
+        "template": null,
+        "media": {
+          "header": null,
+          "portfolio": []
+        }
+      }
+    },
+    {
+      "id": "espaco-mulher-beleza-e-estetica",
+      "slug": "espaco-mulher-beleza-e-estetica",
+      "nome": "Espaço Mulher Beleza e Estética",
+      "categoria": "SALAO",
+      "premium": false,
+      "descricao": "",
+      "telefone": "(24) 98842-0125",
+      "rating": 5,
+      "endereco": "Rua Barão do Rio Branco - Três Rios, RJ, 25804-010, Brazil",
+      "geo": {
+        "coords": [
+          -22.1153935,
+          -43.2101067
+        ],
+        "googlePlaceId": "ChIJU1LvYAD3mAARksvkX_cKJrM"
+      },
+      "poi": {
+        "enabled": true,
+        "cta": "Ver negócio"
+      },
+      "website": {
+        "enabled": false,
+        "type": "none",
+        "template": null,
+        "media": {
+          "header": null,
+          "portfolio": []
+        }
+      }
+    },
+    {
+      "id": "estudio-leticia-prata",
+      "slug": "estudio-leticia-prata",
+      "nome": "Estúdio Leticia Prata",
+      "categoria": "SALAO",
+      "premium": false,
+      "descricao": "",
+      "telefone": "(24) 98838-9718",
+      "rating": 5,
+      "endereco": "R. Sete de Setembro, 277 - loja 11 - Três Rios, RJ, 25802-130, Brazil",
+      "geo": {
+        "coords": [
+          -22.116437500000004,
+          -43.206551499999996
+        ],
+        "googlePlaceId": "ChIJWe8svNv3mAAR0LnL43c3WIc"
+      },
+      "poi": {
+        "enabled": true,
+        "cta": "Ver negócio"
+      },
+      "website": {
+        "enabled": false,
+        "type": "none",
+        "template": null,
+        "media": {
+          "header": null,
+          "portfolio": []
+        }
+      }
+    },
+    {
+      "id": "salao-jeane-e-amanda-designer-da-beleza",
+      "slug": "salao-jeane-e-amanda-designer-da-beleza",
+      "nome": "Salão Jeane e Amanda Designer da Beleza",
+      "categoria": "SALAO",
+      "premium": false,
+      "descricao": "",
+      "telefone": "(24) 98834-6447",
+      "rating": 4.7,
+      "endereco": "R. Renato Cardoso de Miranda, 497 - Santa Rosa, Três Rios - RJ, 25809-014, Brazil",
+      "geo": {
+        "coords": [
+          -22.1078111,
+          -43.2209644
+        ],
+        "googlePlaceId": "ChIJRWO7skT1mAARYdDLDHCjeak"
+      },
+      "poi": {
+        "enabled": true,
+        "cta": "Ver negócio"
+      },
+      "website": {
+        "enabled": false,
+        "type": "none",
+        "template": null,
+        "media": {
+          "header": null,
+          "portfolio": []
+        }
+      }
+    },
+    {
+      "id": "lapher-hair",
+      "slug": "lapher-hair",
+      "nome": "Lapher Hair",
+      "categoria": "SALAO",
+      "premium": false,
+      "descricao": "",
+      "telefone": "(24) 98178-5240",
+      "rating": 5,
+      "endereco": "Galeria Central - Tv. Augusto de Almeida, n° 44 - Três Rios, RJ, 25804-130, Brazil",
+      "geo": {
+        "coords": [
+          -22.1147502,
+          -43.2092934
+        ],
+        "googlePlaceId": "ChIJuXEwh8f3mAARI1E4GAmZLeo"
+      },
+      "poi": {
+        "enabled": true,
+        "cta": "Ver negócio"
+      },
+      "website": {
+        "enabled": false,
+        "type": "none",
+        "template": null,
+        "media": {
+          "header": null,
+          "portfolio": []
+        }
+      }
+    },
+    {
+      "id": "espaco-da-beleza-vanessa-duarte",
+      "slug": "espaco-da-beleza-vanessa-duarte",
+      "nome": "Espaço da beleza Vanessa Duarte",
+      "categoria": "SALAO",
+      "premium": false,
+      "descricao": "",
+      "telefone": "(24) 98825-5790",
+      "rating": 5,
+      "endereco": "R. Washington Luiz, 230 - Boa União, Três Rios - RJ, 25809-190, Brazil",
+      "geo": {
+        "coords": [
+          -22.1021283,
+          -43.2171272
+        ],
+        "googlePlaceId": "ChIJV74Al5X1mAARB2oM5VsJu54"
+      },
+      "poi": {
+        "enabled": true,
+        "cta": "Ver negócio"
+      },
+      "website": {
+        "enabled": false,
+        "type": "none",
+        "template": null,
+        "media": {
+          "header": null,
+          "portfolio": []
+        }
+      }
+    }
+  ]
 }
