@@ -20,7 +20,7 @@ function buildPOI(negocio, categoria) {
 export function initPoiLayer(map, negocios, categorias) {
 
     if (!map || !Array.isArray(negocios)) return;
-
+console.log(negocios,categorias)
     negocios
         .filter(n =>
             n.poi?.enabled &&
@@ -68,3 +68,4 @@ export function initPoiLayer(map, negocios, categorias) {
             });
         });
 }
+
