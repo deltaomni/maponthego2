@@ -1,21 +1,156 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8" />
-  <title>MapOnTheGo</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="UTF-8" />
+    <title>MapOnTheGo</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Bootstrap 5 -->
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+        rel="stylesheet">
+
+    <!-- Leaflet -->
+    <link
+        rel="stylesheet"
+        href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+
+    <!-- Font Awesome -->
+    <script src="https://use.fontawesome.com/releases/v6.2.0/js/all.js"></script>
+
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+        }
+
+        #map {
+            height: 100vh;
+            width: 100%;
+        }
+
+        /* Leaflet */
+        .leaflet-div-icon {
+            background: none;
+            border: none;
+        }
+
+        /* =========================
+           POI animado (base)
+        ========================= */
+        .property {
+            align-items: center;
+            background: #7b1fa2;
+            border-radius: 50%;
+            color: white;
+            display: flex;
+            height: 32px;
+            width: 32px;
+            justify-content: center;
+            position: relative;
+            transition: all .3s ease;
+        }
+
+        .property::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            border-left: 8px solid transparent;
+            border-right: 8px solid transparent;
+            border-top: 8px solid #7b1fa2;
+        }
+
+        .property.highlight {
+            background: white;
+            color: #333;
+            border-radius: 8px;
+            padding: 8px 12px;
+            width: auto;
+            min-width: 200px;
+            box-shadow: 0 10px 25px rgba(0,0,0,.25);
+        }
+
+        .property.highlight::after {
+            border-top-color: white;
+        }
+
+        .property .details {
+            display: none;
+            margin-left: 10px;
+        }
+
+        .property.highlight .details {
+            display: block;
+        }
+
+        /* =========================
+           Botão da legenda
+        ========================= */
+        .legend-toggle {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1050;
+        }
+
+        /* Mobile: legenda tipo Google Maps */
+        @media (max-width: 768px) {
+            .offcanvas-bottom {
+                height: 70vh;
+            }
+        }
+    </style>
 </head>
+
 <body>
 
-  <h1>MapOnTheGo – Mapa</h1>
-  <div id="map">[ mapa placeholder ]</div>
-  <div id="legend">[ legenda placeholder ]</div>
+<!-- MAPA -->
+<div id="map"></div>
 
-  <!-- <script type="module">
-    import './js/app.js';
-  </script> -->
+<!-- BOTÃO LEGENDA -->
+<button
+    class="btn btn-primary rounded-circle legend-toggle"
+    data-bs-toggle="offcanvas"
+    data-bs-target="#legendOffcanvas">
+    <i class="fa fa-list"></i>
+</button>
+
+<!-- LEGENDA (Bootstrap Offcanvas) -->
+<div
+    class="offcanvas offcanvas-end offcanvas-bottom"
+    tabindex="-1"
+    id="legendOffcanvas">
+
+    <div class="offcanvas-header">
+        <h5 class="offcanvas-title">Negócios</h5>
+        <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="offcanvas">
+        </button>
+    </div>
+
+    <div class="offcanvas-body" id="legendContent">
+        <!-- preenchido via JS -->
+        <div class="text-muted">Carregando…</div>
+    </div>
+</div>
+
+<!-- Bootstrap JS -->
+<script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js">
+</script>
+
+<!-- Leaflet -->
+<script
+    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js">
+</script>
+
+<!-- APP CORE -->
 <script type="module" src="/js/app.js"></script>
 
 </body>
 </html>
-
