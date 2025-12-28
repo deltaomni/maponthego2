@@ -1,5 +1,19 @@
 import { initPoiLayer } from './poiLayer.js';
 
-eventBus.on('city:loaded', city => {
-    initPoiLayer(map, city);
-});
+let map;
+
+export function initMap(city) {
+
+    map = L.map('map', {
+        zoomControl: false
+    }).setView(
+        city.center, // ⚠️ array [lat, lng]
+        city.zoom || 14
+    );
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '© OpenStreetMap'
+    }).addTo(map);
+
+    initPoiLayer(map, city.negocios);
+}
