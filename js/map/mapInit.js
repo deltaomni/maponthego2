@@ -1,7 +1,7 @@
 import { initPoiLayer } from './poiLayer.js';
 
 let map;
-
+console.log("init map");
 export function initMap(city) {
 
     map = L.map('map', {
