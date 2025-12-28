@@ -1,0 +1,21 @@
+.property {
+    --poi-color: #7b1fa2;
+    background-color: var(--poi-color);
+}
+
+.property::after {
+    border-top-color: var(--poi-color);
+}
+
+.property.highlight {
+    background-color: #fff;
+}
+
+.property.highlight .icon {
+    color: var(--poi-color);
+}
+
+/* Premium (opcional, discreto) */
+.property.premium {
+    box-shadow: 0 0 0 3px rgba(255,215,0,0.8);
+}
