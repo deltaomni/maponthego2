@@ -16,4 +16,7 @@ export function initMap(city) {
     }).addTo(map);
 
     initPoiLayer(map, city.negocios);
+
+    setTimeout(() => map.invalidateSize(), 0);
 }
+
