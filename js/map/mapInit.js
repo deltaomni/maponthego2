@@ -1,13 +1,21 @@
+import { eventBus } from '../core/eventBus.js';
 import { initPoiLayer } from './poiLayer.js';
 
 let map;
-console.log("init map");
-export function initMap(city) {
+
+eventBus.on('city:loaded', city => {
+    console.log('[mapInit] city:loaded → initMap');
+    initMap(city);
+});
+
+function initMap(city) {
+
+    console.log('[mapInit] init map');
 
     map = L.map('map', {
         zoomControl: false
     }).setView(
-        city.center, // ⚠️ array [lat, lng]
+        city.center,
         city.zoom || 14
     );
 
@@ -19,4 +27,3 @@ export function initMap(city) {
 
     setTimeout(() => map.invalidateSize(), 0);
 }
-
