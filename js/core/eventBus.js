@@ -1,11 +1,14 @@
-const listeners = {};
-
 export const eventBus = {
-  on(event, fn) {
-    listeners[event] = listeners[event] || [];
-    listeners[event].push(fn);
+  events: {},
+  id: Math.random().toString(36).slice(2),
+
+  on(event, handler) {
+    (this.events[event] ||= []).push(handler);
   },
+
   emit(event, payload) {
-    (listeners[event] || []).forEach(fn => fn(payload));
+    console.log(`[eventBus ${this.id}] emit →`, event);
+    (this.events[event] || []).forEach(h => h(payload));
   }
 };
+
