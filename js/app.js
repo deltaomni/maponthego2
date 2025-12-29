@@ -5,6 +5,15 @@ import { isMainDomain } from './core/config.js';
 import './map/mapInit.js';
 import './legend/legendInit.js';
 import './modal/modalController.js';
+import { eventBus } from './core/eventBus.js';
+import { initLegend } from './legend/legendInit.js';
+import { initLegendEvents } from './legend/legendEvents.js';
+
+eventBus.on('city:loaded', city => {
+    initLegend(city);
+    initLegendEvents();
+});
+
 
 (async function bootstrap() {
 
