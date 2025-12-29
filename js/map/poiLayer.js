@@ -1,5 +1,7 @@
 import { eventBus } from '../core/eventBus.js';
 
+let mapInstance = null;
+const markersBySlug = new Map();
 let activeMarker = null;
 
 /**
@@ -10,6 +12,13 @@ let activeMarker = null;
  */
 
 export function initPoiLayer(map, negocios, categorias) {
+    mapInstance = map;
+
+    const L = window.L;
+    if (!L) {
+        console.error('[poiLayer] Leaflet não carregado');
+        return;
+    }
 
     const premiumBounds = L.latLngBounds([]);
 
@@ -35,6 +44,7 @@ export function initPoiLayer(map, negocios, categorias) {
         });
 
         const marker = L.marker(negocio.geo.coords, { icon }).addTo(map);
+        markersBySlug.set(negocio.slug, marker);
         marker.on('click', () => handleMarkerClick(marker, negocio, map));
 
         // ⭐ coleta premiums
@@ -53,6 +63,33 @@ export function initPoiLayer(map, negocios, categorias) {
         });
     }
 }
+
+eventBus.on('city:visibilityChanged', visibleNegocios => {
+
+    const visibleSlugs = new Set(
+        visibleNegocios.map(n => n.slug)
+    );
+
+    markersBySlug.forEach((marker, slug) => {
+        if (visibleSlugs.has(slug)) {
+            if (!mapInstance.hasLayer(marker)) {
+                marker.addTo(mapInstance);
+            }
+        } else {
+            if (mapInstance.hasLayer(marker)) {
+                mapInstance.removeLayer(marker);
+                marker.setZIndexOffset(0);
+
+                if (activeMarker) {
+                    const el = marker.getElement()?.querySelector('.property');
+                    if (el === activeMarker) {
+                        activeMarker = null;
+                    }
+                }
+            }
+        }
+    });
+});
 
 
 function resolveIconHTML(negocio, categoria) {
@@ -143,3 +180,27 @@ function handleMarkerClick(marker, negocio, map) {
         activeMarker = null;
     }
 }
+
+eventBus.on('poi:focus', slug => {
+    const marker = markersBySlug.get(slug);
+    if (!marker || !mapInstance) return;
+
+    const el = marker.getElement()?.querySelector('.property');
+    if (!el) return;
+
+    const latlng = marker.getLatLng();
+
+    // Fecha POI anterior
+    if (activeMarker && activeMarker !== el) {
+        activeMarker.classList.remove('highlight');
+    }
+
+    // Centraliza e destaca
+    mapInstance.panTo(latlng, { animate: true });
+
+    setTimeout(() => {
+        el.classList.add('highlight');
+        marker.setZIndexOffset(1000);
+        activeMarker = el;
+    }, 200);
+});
