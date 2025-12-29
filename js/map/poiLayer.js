@@ -8,7 +8,10 @@ let activeMarker = null;
  * @param {Array} negocios
  * @param {Object} categorias
  */
+
 export function initPoiLayer(map, negocios, categorias) {
+
+    const premiumBounds = L.latLngBounds([]);
 
     negocios.forEach(negocio => {
         if (!negocio.poi?.enabled) return;
@@ -34,8 +37,23 @@ export function initPoiLayer(map, negocios, categorias) {
         const marker = L.marker(negocio.geo.coords, { icon }).addTo(map);
         marker.on('click', () => handleMarkerClick(marker, negocio, map));
 
+        // ⭐ coleta premiums
+        if (negocio.premium) {
+            premiumBounds.extend(negocio.geo.coords);
+        }
     });
+
+    // ⭐ Centralização inteligente
+    if (premiumBounds.isValid()) {
+        console.log('[poiLayer] centralizando pelos premiums');
+        map.fitBounds(premiumBounds, {
+            padding: [60, 60],
+            maxZoom: 16,
+            animate: true
+        });
+    }
 }
+
 
 function resolveIconHTML(negocio, categoria) {
 
@@ -61,7 +79,7 @@ function buildPOIContent(negocio, iconHTML) {
         <div class="details">
             <div class="name">${negocio.nome}</div>
             <div class="address">${shortAddress(negocio.endereco)}</div>
-            <div class="actions">
+            <div class="actions d-flex justify-content-between">
                 ${negocio.website?.enabled
             ? `<button class="btn btn-sm btn-outline-primary js-open-website"
                               data-slug="${negocio.slug}">
