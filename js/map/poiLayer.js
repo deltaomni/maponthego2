@@ -64,9 +64,7 @@ function resolveIconHTML(negocio, categoria) {
 
     // Ícone da categoria
     return `
-        <i class="fa fa-${categoria.icon}"
-           style="color:${categoria.color}">
-        </i>
+        <i class="fa fa-${categoria.icon}"></i>
     `;
 }
 
@@ -81,10 +79,10 @@ function buildPOIContent(negocio, iconHTML) {
             <div class="address">${shortAddress(negocio.endereco)}</div>
             <div class="actions d-flex justify-content-between">
                 ${negocio.website?.enabled
-            ? `<button class="btn btn-sm btn-outline-primary js-open-website"
-                              data-slug="${negocio.slug}">
-                          Website
-                       </button>`
+            ? `<button class="btn btn-sm btn-outline-info js-open-website"
+                    data-slug="${negocio.slug}">
+                    Website
+                </button>`
             : ''
         }
                 ${negocio.telefone
