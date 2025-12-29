@@ -27,12 +27,24 @@ const MIN_VISIBLE = 100;
 const minY = MAX_HEIGHT - MIN_VISIBLE; // recolhido
 const maxY = 0;                        // expandido
 
+const MOBILE_BREAKPOINT = 992;
+
+function isMobile() {
+    return window.innerWidth < MOBILE_BREAKPOINT;
+}
 
 export function initLegendDrag() {
     const panel = document.getElementById('legend-panel');
     const handle = document.getElementById('legend-handle');
 
     if (!panel || !handle) return;
+
+    // 🚫 DESKTOP → desativa drag
+    if (!isMobile()) {
+        panel.style.transform = '';
+        panel.style.transition = '';
+        return;
+    }
 
     const maxHeight = window.innerHeight * 0.7;
     const minVisible = 100;
@@ -45,7 +57,7 @@ export function initLegendDrag() {
     let currentTranslate = minY;
     let dragging = false;
 
-    // estado inicial
+    // estado inicial (mobile)
     panel.style.transform = `translateY(${minY}px)`;
 
     handle.addEventListener('touchstart', e => {
@@ -53,7 +65,6 @@ export function initLegendDrag() {
         startY = e.touches[0].clientY;
         panel.style.transition = 'none';
 
-        // lê posição atual REAL
         const matrix = new WebKitCSSMatrix(
             getComputedStyle(panel).transform
         );
@@ -66,7 +77,6 @@ export function initLegendDrag() {
         const delta = e.touches[0].clientY - startY;
         let next = startTranslate + delta;
 
-        // clamp
         next = Math.max(maxY, Math.min(minY, next));
 
         panel.style.transform = `translateY(${next}px)`;
@@ -79,11 +89,19 @@ export function initLegendDrag() {
 
         const midpoint = minY / 2;
 
-        if (currentTranslate < midpoint) {
-            panel.style.transform = `translateY(${maxY}px)`; // expandido
-        } else {
-            panel.style.transform = `translateY(${minY}px)`; // recolhido
-        }
+        panel.style.transform =
+            currentTranslate < midpoint
+                ? `translateY(${maxY}px)`
+                : `translateY(${minY}px)`;
     });
 }
 
+window.addEventListener('resize', () => {
+    const panel = document.getElementById('legend-panel');
+    if (!panel) return;
+
+    if (!isMobile()) {
+        panel.style.transform = '';
+        panel.style.transition = '';
+    }
+});
