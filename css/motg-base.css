@@ -224,6 +224,7 @@ html, body {
 
 .property {
     --poi-color: #7b1fa2;
+    --poiOpen-color:#000000;
     background-color: var(--poi-color);
 }
 
@@ -234,6 +235,8 @@ html, body {
 
     .property.highlight {
         background-color: #fff;
+        width: auto !important;
+        height: auto !important;
     }
 
         .property.highlight .icon {
@@ -243,26 +246,28 @@ html, body {
     /* Premium (opcional, discreto) */
     .property.premium {
         box-shadow: 0 0 0 3px rgba(255,215,0,0.8);
-        /*height: 30px;*/
-        /*width: 30px;*/
+        height: 40px;
+        width: 40px;
     }
 
         .property.premium .avatar {
-            width: 32px;
-            height: 32px;
+            width: 38px;
+            height: 38px;
             border-radius: 50%;
             /*border: 2px solid*/
         }
 
         .property.premium.highlight .avatar {
-            width: 60px;
-            height: 60px;
+            width: 50px;
+            height: auto;
             border-radius: 10px;
             /*border: 2px solid*/
+            color: var(--poiOpen-color);
         }
 
         .property.premium::after {
-            border-top-color: #ffc107; /*var(--poi-color);*/
+            border-top-color: #ffd700cc; /*var(--poi-color);*/
+            margin-top: 4px;
             z-index: -1;
         }
 
