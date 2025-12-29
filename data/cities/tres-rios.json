@@ -12,7 +12,16 @@
       "label": "Salões de Beleza",
       "icon": "scissors",
       "color": "#f2efe9",
-      "colorOpen": "#d63384"
+      "colorOpen": "#d63384",
+      "poiColor": "#7b1fa2"
+    },
+    "PET": {
+      "id": "PET",
+      "label": "Pet-Shop",
+      "icon": "dog",
+      "color": "#f2efe9",
+      "colorOpen": "#d63384",
+      "poiColor": "#000000"
     }
   },
   "negocios": [
@@ -39,7 +48,7 @@
         "cta": "Ver negócio"
       },
       "website": {
-        "enabled": false,
+        "enabled": true,
         "type": "none",
         "template": null,
         "media": {
@@ -53,8 +62,8 @@
       "id": "studio-virtuosa",
       "slug": "studio-virtuosa",
       "nome": "Studio Virtuosa",
-      "categoria": "SALAO",
-      "premium": false,
+      "categoria": "PET",
+      "premium": true,
       "descricao": "",
       "telefone": "(24) 99295-6673",
       "rating": 4.9,
