@@ -6,6 +6,14 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
+    <!--Bootstrap 5-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+    <link href="assets/fontawesome/css/fontawesome.min.css" rel="stylesheet" />
+    <link href="assets/fontawesome/css/regular.min.css" rel="stylesheet" />
+    <link href="assets/fontawesome/css/solid.min.css" rel="stylesheet" />
+    <link href="assets/fontawesome/css/brands.min.css" rel="stylesheet" />
+
     <!-- Bootstrap 5 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
           rel="stylesheet">
@@ -18,39 +26,50 @@
     <script src="https://use.fontawesome.com/releases/v6.2.0/js/all.js"></script>
 
     <link href="css/motg-base.css" rel="stylesheet" />
-</head>
 
+</head>
 <body>
 
     <!-- MAPA -->
     <div id="map"></div>
 
+    <!-- PAINEL / LEGENDA -->
+    <div id="legend-panel">
 
-    <!-- LEGENDA (Bootstrap Offcanvas) -->
-    <div class="offcanvas offcanvas-bottom d-none"
-         tabindex="-1"
-         id="legendOffcanvas">
-
-        <div class="offcanvas-header">
-            <h5 class="offcanvas-title">Negócios</h5>
-            <button type="button"
-                    class="btn-close"
-                    data-bs-dismiss="offcanvas">
-            </button>
+        <!-- HANDLE (mobile) -->
+        <div id="legend-handle">
+            <div class="handle-bar"></div>
         </div>
 
-        <div class="offcanvas-body" id="legendContent">
+        <!-- CONTEÚDO -->
+        <div id="legend-content">
             <!-- preenchido via JS -->
-            <div class="text-muted">Carregando</div>
+        </div>
+
+    </div>
+
+    <!-- MODAL WEBSITE -->
+    <div class="modal fade" id="websiteModal" tabindex="-1">
+        <div class="modal-dialog modal-fullscreen">
+            <div class="modal-content">
+                <div class="modal-header py-2">
+                    <h6 class="modal-title" id="websiteModalTitle"></h6>
+                    <a id="websiteExternalLink" href="#" target="_blank" class="ms-auto me-3">
+                        Abrir na Web
+                    </a>
+                    <button class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body p-0">
+                    <iframe id="websiteIframe"></iframe>
+                </div>
+            </div>
         </div>
     </div>
 
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js">
-    </script>
 
     <!-- Leaflet -->
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js">
+    <script defer
+            src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js">
     </script>
 
     <!-- APP CORE -->
