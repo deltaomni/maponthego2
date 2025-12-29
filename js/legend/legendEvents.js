@@ -1,4 +1,6 @@
 import { eventBus } from '../core/eventBus.js';
+import { toggleCategoria, setSearch } from '../core/cityStore.js';
+
 
 export function initLegendEvents() {
 
@@ -14,10 +16,20 @@ export function initLegendEvents() {
             eventBus.emit('website:open', websiteBtn.dataset.slug);
         }
 
-        const badge = e.target.closest('[data-category]');
+        const badge = e.target.closest('.legend-filters [data-category]');
+
         if (badge) {
-            eventBus.emit('legend:filter', badge.dataset.category);
+            badge.classList.toggle('inactive');
+            toggleCategoria(badge.dataset.category);
         }
+
+        const searchInput = document.querySelector('.legend-search input');
+        if (searchInput) {
+            searchInput.addEventListener('input', e => {
+                setSearch(e.target.value);
+            });
+        }
+
     });
 }
 
@@ -105,3 +117,7 @@ window.addEventListener('resize', () => {
         panel.style.transition = '';
     }
 });
+
+
+
+
