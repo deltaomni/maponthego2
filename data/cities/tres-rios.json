@@ -62,7 +62,7 @@
       "id": "studio-virtuosa",
       "slug": "studio-virtuosa",
       "nome": "Studio Virtuosa",
-      "categoria": "PET",
+      "categoria": "SALAO",
       "premium": true,
       "descricao": "",
       "telefone": "(24) 99295-6673",
@@ -80,7 +80,7 @@
         "cta": "Ver negócio"
       },
       "website": {
-        "enabled": false,
+        "enabled": true,
         "type": "none",
         "template": null,
         "media": {
