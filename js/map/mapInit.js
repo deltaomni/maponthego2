@@ -16,7 +16,7 @@ function initMap(city) {
         zoomControl: false
     }).setView(
         city.center,
-        city.zoom || 17
+        city.zoom || 18
     );
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -32,4 +32,5 @@ function initMap(city) {
 
     setTimeout(() => map.invalidateSize(), 0);
 }
+
 
