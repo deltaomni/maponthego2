@@ -1,5 +1,6 @@
-import { eventBus } from '../core/eventBus.js';
+//import { eventBus } from '../core/eventBus.js';
 import { initLegendDrag } from './legendEvents.js';
+import { eventBus } from '../core/eventBus.js';
 
 initLegendDrag();
 
@@ -75,6 +76,65 @@ function buildBusinessCard(n) {
 </li>`;
 }
 
+//function updateLegendVisibility(visibleNegocios) {
+//    const visibleSlugs = new Set(
+//        visibleNegocios.map(n => n.slug)
+//    );
+
+//    document
+//        .querySelectorAll('.business-card')
+//        .forEach(card => {
+//            const slug = card.dataset.id;
+
+//            if (visibleSlugs.has(slug)) {
+//                card.classList.remove('d-none');
+//            } else {
+//                card.classList.add('d-none');
+//            }
+//        });
+//}
+
+function updateLegendVisibility(visibleNegocios) {
+
+    const visibleSlugs = new Set(
+        visibleNegocios.map(n => n.slug)
+    );
+
+    const list = document.querySelector('.legend-list');
+    if (!list) return;
+
+    const cards = list.querySelectorAll('.business-card');
+
+    let visibleCount = 0;
+
+    cards.forEach(card => {
+        const slug = card.dataset.id;
+
+        if (visibleSlugs.has(slug)) {
+            card.classList.remove('d-none');
+            visibleCount++;
+        } else {
+            card.classList.add('d-none');
+        }
+    });
+
+    // 🔹 estado vazio
+    let empty = list.querySelector('.legend-empty');
+
+    if (visibleCount === 0) {
+        if (!empty) {
+            empty = document.createElement('li');
+            empty.className = 'legend-empty list-group-item text-muted text-center';
+            empty.textContent = 'Nenhum negócio encontrado';
+            list.appendChild(empty);
+        }
+    } else {
+        empty?.remove();
+    }
+}
+
+
+
 function shortAddress(addr) {
     return addr.split(' - ')[0];
 }
@@ -82,3 +142,7 @@ function shortAddress(addr) {
 function formatPhone(p) {
     return p.replace(/\D/g, '');
 }
+
+eventBus.on('city:visibilityChanged', visibleNegocios => {
+    updateLegendVisibility(visibleNegocios);
+});
