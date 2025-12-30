@@ -1,78 +1,46 @@
 import { eventBus } from '../core/eventBus.js';
 
-let modalRoot = null;
+let modalEl = null;
 
-function ensureModal() {
-    if (modalRoot) return modalRoot;
+export function openBusinessModal({ city, business, mode = 'demo' }) {
+    if (modalEl) return;
 
-    modalRoot = document.createElement('div');
-    modalRoot.id = 'site-modal';
-    modalRoot.innerHTML = `
+    modalEl = document.createElement('div');
+    modalEl.id = 'motg-business-modal';
+
+    modalEl.innerHTML = `
         <div class="modal-backdrop fade show"></div>
         <div class="modal d-block" tabindex="-1">
             <div class="modal-dialog modal-fullscreen">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title">Prévia do site</h5>
+                        <h5 class="modal-title">${business.nome}</h5>
                         <button type="button" class="btn-close"></button>
                     </div>
                     <div class="modal-body p-0">
-                        <div id="modal-site-root"></div>
+                        <div id="modal-business-root"></div>
                     </div>
                 </div>
             </div>
         </div>
     `;
 
-    document.body.appendChild(modalRoot);
+    document.body.appendChild(modalEl);
 
-    modalRoot.querySelector('.btn-close')
-        .addEventListener('click', closeModal);
+    modalEl.querySelector('.btn-close')
+        .addEventListener('click', closeBusinessModal);
 
-    return modalRoot;
-}
-
-export function openSiteModal(payload) {
-    const modal = ensureModal();
-
-    eventBus.emit('site:render', {
+    // 🔥 AQUI ESTÁ O PONTO-CHAVE
+    eventBus.emit('business:render', {
         target: 'modal',
-        ...payload
+        city,
+        business,
+        mode
     });
 }
 
-export function closeModal() {
-    if (!modalRoot) return;
-    modalRoot.remove();
-    modalRoot = null;
+export function closeBusinessModal() {
+    if (!modalEl) return;
+    modalEl.remove();
+    modalEl = null;
 }
-
-
-
-//import { eventBus } from '../core/eventBus.js';
-
-///**
-// * Abre o site do negócio no modal
-// * (implementação provisória)
-// */
-//export function openSiteModal({ citySlug, businessSlug }) {
-//    console.log('[modalController] openSiteModal', citySlug, businessSlug);
-
-//    // por enquanto, apenas redireciona
-//    const url = `/negocio/index.html?city=${citySlug}&site=${businessSlug}`;
-//    window.location.href = url;
-//}
-
-///**
-// * Escuta o contexto do negócio
-// */
-//eventBus.on('business:context', (context) => {
-//    if (context.source === 'url' && context.businessSlug) {
-//        console.log('[modalController] abrindo site demo:', context);
-
-//        openSiteModal({
-//            citySlug: context.citySlug,
-//            businessSlug: context.businessSlug
-//        });
-//    }
-//});
