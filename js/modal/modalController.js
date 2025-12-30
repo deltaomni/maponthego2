@@ -35,10 +35,6 @@ function ensureModal() {
 export function openSiteModal(payload) {
     const modal = ensureModal();
 
-    eventBus.emit('site:render', {
-        target: 'modal',
-        ...payload
-    });
 }
 
 export function closeModal() {
@@ -46,3 +42,4 @@ export function closeModal() {
     modalRoot.remove();
     modalRoot = null;
 }
+
