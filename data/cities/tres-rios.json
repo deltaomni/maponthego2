@@ -15,6 +15,14 @@
       "colorOpen": "#d63384",
       "poiColor": "#7b1fa2"
     },
+    "BARBEARIA": {
+      "id": "BARBEARIA",
+      "label": "Barbearia",
+      "icon": "scissors",
+      "color": "#FF0000",
+      "colorOpen": "#000000",
+      "poiColor": "#0000FF"
+    },
     "PET": {
       "id": "PET",
       "label": "Pet-Shop",
@@ -94,7 +102,8 @@
       "slug": "paty-castro-salao-de-beleza",
       "nome": "PATY CASTRO Salão de Beleza",
       "categoria": "SALAO",
-      "premium": false,
+      "premium": true,
+      "logobase64": "data:image/jpeg;base64,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",
       "descricao": "",
       "telefone": "(24) 98845-6875",
       "rating": 4.7,
@@ -322,6 +331,316 @@
           -43.2171272
         ],
         "googlePlaceId": "ChIJV74Al5X1mAARB2oM5VsJu54"
+      },
+      "poi": {
+        "enabled": true,
+        "cta": "Ver negócio"
+      },
+      "website": {
+        "enabled": false,
+        "type": "none",
+        "template": null,
+        "media": {
+          "header": null,
+          "portfolio": []
+        }
+      }
+    },
+    {
+      "id": "cavalheiros-barber-shop",
+      "slug": "cavalheiros-barber-shop",
+      "nome": "Cavalheiros Barber Shop",
+      "categoria": "BARBEARIA",
+      "premium": false,
+      "descricao": "",
+      "telefone": "(24) 98815-6132",
+      "rating": 4.4,
+      "endereco": "Pimentel Barbosa - R. Bernardo Bello, Sl, 20 - Três Rios, RJ, 25804-150, Brazil",
+      "geo": {
+        "coords": [
+          -22.1175182,
+          -43.2095942
+        ],
+        "googlePlaceId": "ChIJETKgo372mAARiJQBO1z3Hs0"
+      },
+      "poi": {
+        "enabled": true,
+        "cta": "Ver negócio"
+      },
+      "website": {
+        "enabled": false,
+        "type": "none",
+        "template": null,
+        "media": {
+          "header": null,
+          "portfolio": []
+        }
+      }
+    },
+    {
+      "id": "barbearia-davi",
+      "slug": "barbearia-davi",
+      "nome": "Barbearia Davi",
+      "categoria": "BARBEARIA",
+      "premium": false,
+      "descricao": "",
+      "telefone": "(24) 99284-8952",
+      "rating": 4.8,
+      "endereco": "R. Padre Conrado, n33 - loja 1 - Três Rios, RJ, 25804-090, Brazil",
+      "geo": {
+        "coords": [
+          -22.1195935,
+          -43.2097037
+        ],
+        "googlePlaceId": "ChIJ0XcWGGr3mAARh3Fta4Adftc"
+      },
+      "poi": {
+        "enabled": true,
+        "cta": "Ver negócio"
+      },
+      "website": {
+        "enabled": false,
+        "type": "none",
+        "template": null,
+        "media": {
+          "header": null,
+          "portfolio": []
+        }
+      }
+    },
+    {
+      "id": "barbearia-do-bii",
+      "slug": "barbearia-do-bii",
+      "nome": "Barbearia Do Bií",
+      "categoria": "BARBEARIA",
+      "premium": false,
+      "descricao": "",
+      "telefone": "",
+      "rating": 4.8,
+      "endereco": "R. Nelson Viana, 294 - Três Rios, RJ, 25805-290, Brazil",
+      "geo": {
+        "coords": [
+          -22.1114473,
+          -43.2104724
+        ],
+        "googlePlaceId": "ChIJ5RSGpNX1mAARIxrQvo4_5C0"
+      },
+      "poi": {
+        "enabled": true,
+        "cta": "Ver negócio"
+      },
+      "website": {
+        "enabled": false,
+        "type": "none",
+        "template": null,
+        "media": {
+          "header": null,
+          "portfolio": []
+        }
+      }
+    },
+    {
+      "id": "sandrin-do-carmo-barbearia",
+      "slug": "sandrin-do-carmo-barbearia",
+      "nome": "Sandrin do Carmo Barbearia",
+      "categoria": "BARBEARIA",
+      "premium": false,
+      "descricao": "",
+      "telefone": "(24) 98833-5470",
+      "rating": 5,
+      "endereco": "R. Dr. Antônio Carlos - Três Rios, RJ, 25804-050, Brazil",
+      "geo": {
+        "coords": [
+          -22.1170539,
+          -43.214335299999995
+        ],
+        "googlePlaceId": "ChIJIa_nzsL1mAARfkjr4qbHSCY"
+      },
+      "poi": {
+        "enabled": true,
+        "cta": "Ver negócio"
+      },
+      "website": {
+        "enabled": false,
+        "type": "none",
+        "template": null,
+        "media": {
+          "header": null,
+          "portfolio": []
+        }
+      }
+    },
+    {
+      "id": "barbearia-do-sandrinho",
+      "slug": "barbearia-do-sandrinho",
+      "nome": "Barbearia Do Sandrinho",
+      "categoria": "BARBEARIA",
+      "premium": false,
+      "descricao": "",
+      "telefone": "",
+      "rating": 4.9,
+      "endereco": "R. Padre José Meyer, 16 - Vila Isabel, Três Rios - RJ, 25811-330, Brazil",
+      "geo": {
+        "coords": [
+          -22.107553,
+          -43.1897868
+        ],
+        "googlePlaceId": "ChIJ7e_qKOn1mAAR847YB_jG7YA"
+      },
+      "poi": {
+        "enabled": true,
+        "cta": "Ver negócio"
+      },
+      "website": {
+        "enabled": false,
+        "type": "none",
+        "template": null,
+        "media": {
+          "header": null,
+          "portfolio": []
+        }
+      }
+    },
+    {
+      "id": "barbearia-j-a",
+      "slug": "barbearia-j-a",
+      "nome": "BARBEARIA J & A",
+      "categoria": "BARBEARIA",
+      "premium": false,
+      "descricao": "",
+      "telefone": "(24) 98862-2217",
+      "rating": 4.6,
+      "endereco": "R. Oscár de Azevedo, 70 - Purys, Três Rios - RJ, 25808-130, Brazil",
+      "geo": {
+        "coords": [
+          -22.0992969,
+          -43.211101299999996
+        ],
+        "googlePlaceId": "ChIJgyzMp3j1mAARZw4_66-kmcY"
+      },
+      "poi": {
+        "enabled": true,
+        "cta": "Ver negócio"
+      },
+      "website": {
+        "enabled": false,
+        "type": "none",
+        "template": null,
+        "media": {
+          "header": null,
+          "portfolio": []
+        }
+      }
+    },
+    {
+      "id": "barbearia-do-ronaldo",
+      "slug": "barbearia-do-ronaldo",
+      "nome": "Barbearia do Ronaldo",
+      "categoria": "BARBEARIA",
+      "premium": false,
+      "descricao": "",
+      "telefone": "(75) 98155-6678",
+      "rating": 4.7,
+      "endereco": "Av. Zoello Sola, 1457 - Triângulo, Três Rios - RJ, 25821-080, Brazil",
+      "geo": {
+        "coords": [
+          -22.1178778,
+          -43.1895917
+        ],
+        "googlePlaceId": "ChIJRVt_j-H1mAAReMJohpyBMUU"
+      },
+      "poi": {
+        "enabled": true,
+        "cta": "Ver negócio"
+      },
+      "website": {
+        "enabled": false,
+        "type": "none",
+        "template": null,
+        "media": {
+          "header": null,
+          "portfolio": []
+        }
+      }
+    },
+    {
+      "id": "barbearia-lucio",
+      "slug": "barbearia-lucio",
+      "nome": "Barbearia Lúcio",
+      "categoria": "BARBEARIA",
+      "premium": false,
+      "descricao": "",
+      "telefone": "(24) 98110-2483",
+      "rating": 5,
+      "endereco": "R. Benjamin Constant, 171 - Portão Vermelho, Três Rios - RJ, 25807-070, Brazil",
+      "geo": {
+        "coords": [
+          -22.107732,
+          -43.21042
+        ],
+        "googlePlaceId": "ChIJacuk8qr1mAARXtEXoSGRySk"
+      },
+      "poi": {
+        "enabled": true,
+        "cta": "Ver negócio"
+      },
+      "website": {
+        "enabled": false,
+        "type": "none",
+        "template": null,
+        "media": {
+          "header": null,
+          "portfolio": []
+        }
+      }
+    },
+    {
+      "id": "im-barbearia",
+      "slug": "im-barbearia",
+      "nome": "IM Barbearia",
+      "categoria": "BARBEARIA",
+      "premium": false,
+      "descricao": "",
+      "telefone": "(24) 99220-6836",
+      "rating": "",
+      "endereco": "R. Sete de Setembro, 186 - Três Rios, RJ, 25802-130, Brazil",
+      "geo": {
+        "coords": [
+          -22.118603800000002,
+          -43.206652899999995
+        ],
+        "googlePlaceId": "ChIJ4-VAsJj3mAARxIkgkWkwovk"
+      },
+      "poi": {
+        "enabled": true,
+        "cta": "Ver negócio"
+      },
+      "website": {
+        "enabled": false,
+        "type": "none",
+        "template": null,
+        "media": {
+          "header": null,
+          "portfolio": []
+        }
+      }
+    },
+    {
+      "id": "barbearia-diego",
+      "slug": "barbearia-diego",
+      "nome": "Barbearia Diego",
+      "categoria": "BARBEARIA",
+      "premium": false,
+      "descricao": "",
+      "telefone": "(24) 99205-7671",
+      "rating": 5,
+      "endereco": "Centro porque comercial - R. Dr. Valmir Peçanha, 64 - loja 7 - Centro, Três Rios - RJ, 25802-180, Brazil",
+      "geo": {
+        "coords": [
+          -22.1149515,
+          -43.208192499999996
+        ],
+        "googlePlaceId": "ChIJFauCYuH3mAARPvXC3GIG6II"
       },
       "poi": {
         "enabled": true,
