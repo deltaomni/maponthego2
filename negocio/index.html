@@ -1,18 +1,175 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8" />
-  <title>Negócio | MapOnTheGo</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="UTF-8" />
+    <title>Negócio no Mapa | MapOnTheGo</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+          rel="stylesheet" />
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="/assets/fontawesome/css/all.min.css" />
+
+    <!-- Base MOTG -->
+    <link rel="stylesheet" href="/css/motg-base.css" />
+
+    <!-- Negócio -->
+    <link rel="stylesheet" href="./negocio.css" />
 </head>
-<body>
 
-  <h1>Site do Negócio</h1>
-  <div id="business-root">carregando…</div>
+<body class="bg-light">
 
-  <script type="module">
-    import '../js/core/businessStore.js';
-  </script>
+    <!-- =====================================
+         CTA DEMONSTRATIVO (condicional)
+         aparece apenas se NÃO for domínio próprio
+    ====================================== -->
+    <div id="demo-cta" class="bg-primary text-white py-3 d-none">
+        <div class="container d-flex flex-column flex-md-row align-items-center justify-content-between gap-3">
+            <div>
+                <strong>Este é um site demonstrativo.</strong>
+                <span class="ms-1">
+                    Comece 2026 no mapa de serviços da sua cidade com um site profissional.
+                </span>
+            </div>
+            <button id="cta-know-more" class="btn btn-light btn-sm fw-bold">
+                Quero saber quanto custa
+            </button>
+        </div>
+    </div>
+
+    <!-- =====================================
+         HEADER / HERO
+    ====================================== -->
+    <header class="bg-white border-bottom">
+        <div class="container py-4">
+            <div class="row align-items-center g-3">
+
+                <!-- Logo / Nome -->
+                <div class="col-12 col-md-8">
+                    <h1 id="business-name" class="mb-1 placeholder-wave">
+                        <span class="placeholder col-6"></span>
+                    </h1>
+                    <p id="business-category" class="text-muted mb-0 placeholder-wave">
+                        <span class="placeholder col-4"></span>
+                    </p>
+                </div>
+
+                <!-- CTA WhatsApp -->
+                <div class="col-12 col-md-4 text-md-end">
+                    <a id="business-whatsapp"
+                       href="#"
+                       target="_blank"
+                       class="btn btn-success btn-lg w-100 w-md-auto disabled placeholder-wave">
+                        <i class="fab fa-whatsapp me-2"></i>
+                        Falar no WhatsApp
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </header>
+
+    <!-- =====================================
+         CONTEÚDO PRINCIPAL
+    ====================================== -->
+    <main class="container my-5">
+
+        <!-- SOBRE -->
+        <section id="section-about" class="mb-5">
+            <h2 class="mb-3">Sobre</h2>
+            <p id="business-description" class="placeholder-wave">
+                <span class="placeholder col-12"></span>
+                <span class="placeholder col-10"></span>
+                <span class="placeholder col-8"></span>
+            </p>
+        </section>
+
+        <!-- SERVIÇOS (opcional) -->
+        <section id="section-services" class="mb-5 d-none">
+            <h2 class="mb-3">Serviços</h2>
+            <div id="business-services" class="row g-3">
+                <!-- cards gerados via JS -->
+            </div>
+        </section>
+
+        <!-- LOCALIZAÇÃO -->
+        <section id="section-location" class="mb-5">
+            <h2 class="mb-3">Localização</h2>
+
+            <div class="row g-4">
+                <!-- Endereço -->
+                <div class="col-12 col-md-5">
+                    <div class="bg-white p-3 rounded shadow-sm h-100">
+                        <p id="business-address" class="mb-2 placeholder-wave">
+                            <span class="placeholder col-8"></span>
+                        </p>
+                        <p id="business-city" class="text-muted mb-0 placeholder-wave">
+                            <span class="placeholder col-6"></span>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Mapa -->
+                <div class="col-12 col-md-7">
+                    <div class="ratio ratio-16x9 rounded overflow-hidden shadow-sm">
+                        <iframe id="business-map"
+                                src=""
+                                loading="lazy"
+                                referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTATO -->
+        <section id="section-contact">
+            <h2 class="mb-3">Contato</h2>
+
+            <div class="bg-white p-4 rounded shadow-sm">
+                <div class="row g-3">
+
+                    <div class="col-12 col-md-6">
+                        <strong>Telefone / WhatsApp</strong>
+                        <p id="business-phone" class="mb-0 placeholder-wave">
+                            <span class="placeholder col-6"></span>
+                        </p>
+                    </div>
+
+                    <div class="col-12 col-md-6">
+                        <strong>Horário de funcionamento</strong>
+                        <p id="business-hours" class="mb-0 placeholder-wave">
+                            <span class="placeholder col-7"></span>
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- =====================================
+         FOOTER
+    ====================================== -->
+    <footer class="bg-white border-top mt-5">
+        <div class="container py-4 text-center text-muted small">
+            <div id="footer-demo-note" class="mb-2 d-none">
+                Site demonstrativo gerado automaticamente pelo MapOnTheGo.
+            </div>
+            <div>
+                © <span id="footer-year"></span> MapOnTheGo
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Negócio -->
+    <script src="./negocio.js"></script>
 
 </body>
 </html>
