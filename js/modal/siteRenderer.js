@@ -103,9 +103,15 @@ function renderModalSite({ city, business }) {
 eventBus.on('business:data', (payload) => {
     console.log('[siteRenderer] business:data recebido', payload);
 
-    if (payload.source === 'url') {
+    //if (payload.source === 'url') {
+    //    renderFullSite(payload);
+    //} else {
+    //    renderModalSite(payload);
+    //}
+    if (payload.source === 'domain') {
         renderFullSite(payload);
     } else {
         renderModalSite(payload);
     }
+
 });
