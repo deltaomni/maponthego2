@@ -1,46 +1,48 @@
 import { eventBus } from '../core/eventBus.js';
 
-let modalEl = null;
+let modalRoot = null;
 
-export function openBusinessModal({ city, business, mode = 'demo' }) {
-    if (modalEl) return;
+function ensureModal() {
+    if (modalRoot) return modalRoot;
 
-    modalEl = document.createElement('div');
-    modalEl.id = 'motg-business-modal';
-
-    modalEl.innerHTML = `
+    modalRoot = document.createElement('div');
+    modalRoot.id = 'site-modal';
+    modalRoot.innerHTML = `
         <div class="modal-backdrop fade show"></div>
         <div class="modal d-block" tabindex="-1">
             <div class="modal-dialog modal-fullscreen">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title">${business.nome}</h5>
+                        <h5 class="modal-title">Prévia do site</h5>
                         <button type="button" class="btn-close"></button>
                     </div>
                     <div class="modal-body p-0">
-                        <div id="modal-business-root"></div>
+                        <div id="modal-site-root"></div>
                     </div>
                 </div>
             </div>
         </div>
     `;
 
-    document.body.appendChild(modalEl);
+    document.body.appendChild(modalRoot);
 
-    modalEl.querySelector('.btn-close')
-        .addEventListener('click', closeBusinessModal);
+    modalRoot.querySelector('.btn-close')
+        .addEventListener('click', closeModal);
 
-    // 🔥 AQUI ESTÁ O PONTO-CHAVE
-    eventBus.emit('business:render', {
+    return modalRoot;
+}
+
+export function openSiteModal(payload) {
+    const modal = ensureModal();
+
+    eventBus.emit('site:render', {
         target: 'modal',
-        city,
-        business,
-        mode
+        ...payload
     });
 }
 
-export function closeBusinessModal() {
-    if (!modalEl) return;
-    modalEl.remove();
-    modalEl = null;
+export function closeModal() {
+    if (!modalRoot) return;
+    modalRoot.remove();
+    modalRoot = null;
 }
