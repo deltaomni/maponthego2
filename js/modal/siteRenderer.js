@@ -70,7 +70,7 @@ function renderFullSite({ city, business }) {
     `;
 }
 
-export function renderFullSite({ city, business }) {
+export function renderFullWebSite({ city, business }) {
     const fullwebsite = renderFullSite({ city, business });
 
 }
@@ -120,3 +120,4 @@ eventBus.on('site:render', ({ target, city, business }) => {
         renderModalSite({ city, business });
     }
 });
+
