@@ -2,6 +2,7 @@ import { eventBus } from '../core/eventBus.js';
 import { toggleCategoria, setSearch } from '../core/cityStore.js';
 
 
+
 export function initLegendEvents() {
 
     document.addEventListener('click', e => {
