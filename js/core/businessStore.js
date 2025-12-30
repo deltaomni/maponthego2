@@ -1,5 +1,4 @@
 import { eventBus } from './eventBus.js';
-import { openSiteModal } from '../modal/modalController.js';
 
 async function loadCity(citySlug) {
     const res = await fetch(`/data/cities/${citySlug}.json`);
@@ -80,14 +79,9 @@ export async function initBusinessStore() {
         business
     });
 
-    if (source === 'url') {
-        openSiteModal({
-            city,
-            business,
-            mode: 'demo'
-        });
-    }
 
 }
 
 initBusinessStore();
+
+
