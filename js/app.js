@@ -9,9 +9,18 @@ import { eventBus } from './core/eventBus.js';
 import { initLegend } from './legend/legendInit.js';
 import { initLegendEvents } from './legend/legendEvents.js';
 
+import { renderCategories } from './legend/legendCategories.js';
+import { renderLegendItems } from './legend/legendItem.js';
+import { hydrateLegendItems } from './legend/legendItem.js';
+
+
 eventBus.on('city:loaded', city => {
     initLegend(city);
     initLegendEvents();
+
+    renderCategories(city.categorias);
+    renderLegendItems(city.negocios);
+    hydrateLegendItems(city.negocios); // 👈 NOVO
 });
 
 
