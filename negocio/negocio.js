@@ -8,6 +8,7 @@ import { renderFullSite } from '../js/modal/siteRenderer.js';
 import '../js/core/businessStore.js';
 
 eventBus.on('business:data', ({ city, business }) => {
-    //renderFullSite({ city, business });
+    renderFullWebSite({ city, business });
 });
+
 
