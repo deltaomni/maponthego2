@@ -1,5 +1,5 @@
 import { eventBus } from './eventBus.js';
-import { openBusinessModal } from '../modal/modalController.js';
+import { openSiteModal } from '../modal/modalController.js';
 
 async function loadCity(citySlug) {
     const res = await fetch(`/data/cities/${citySlug}.json`);
@@ -81,7 +81,7 @@ export async function initBusinessStore() {
     });
 
     if (source === 'url') {
-        openBusinessModal({
+        openSiteModal({
             city,
             business,
             mode: 'demo'
