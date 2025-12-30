@@ -70,6 +70,10 @@ function renderFullSite({ city, business }) {
     `;
 }
 
+export function renderFullSite({ city, business }) {
+    const fullwebsite = renderFullSite({ city, business });
+
+}
 
 function renderModalSite({ city, business }) {
     const root = document.getElementById('modal-site-root');
@@ -101,7 +105,6 @@ function renderModalSite({ city, business }) {
 
     console.log('[siteRenderer] site MODAL renderizado:', business.slug);
 }
-
 
 
 // 🔥 DOMÍNIO PRÓPRIO → SITE COMPLETO
