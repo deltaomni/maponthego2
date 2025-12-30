@@ -104,6 +104,14 @@ function renderModalSite({ city, business }) {
 
 
 
+// 🔥 DOMÍNIO PRÓPRIO → SITE COMPLETO
+eventBus.on('business:data', ({ source, city, business }) => {
+    if (source === 'domain') {
+        renderFullSite({ city, business });
+    }
+});
+
+// 🔥 MAPONTHEGO → MODAL
 eventBus.on('site:render', ({ target, city, business }) => {
     if (target === 'modal') {
         renderModalSite({ city, business });
