@@ -96,22 +96,73 @@ function renderFullSite({ city, business }) {
 //    console.log('[siteRenderer] site FULL renderizado:', business.slug);
 //}
 
+//function renderModalSite({ city, business }) {
+//    console.log('[siteRenderer] site MODAL (placeholder):', business.slug);
+//}
+
+//eventBus.on('business:data', (payload) => {
+//    console.log('[siteRenderer] business:data recebido', payload);
+
+//    //if (payload.source === 'url') {
+//    //    renderFullSite(payload);
+//    //} else {
+//    //    renderModalSite(payload);
+//    //}
+//    if (payload.source === 'domain') {
+//        renderFullSite(payload);
+//    } else {
+//        renderModalSite(payload);
+//    }
+
+//});
+
 function renderModalSite({ city, business }) {
-    console.log('[siteRenderer] site MODAL (placeholder):', business.slug);
+    const root = document.getElementById('modal-site-root');
+    if (!root) return;
+
+    root.innerHTML = `
+        <div class="bg-light">
+            <header class="bg-dark text-white py-3">
+                <div class="container">
+                    <h1 class="h4 m-0">${business.nome}</h1>
+                </div>
+            </header>
+
+            <section class="p-4 text-center">
+                <h2 class="fw-bold mb-3">
+                    Este é um site demonstrativo
+                </h2>
+                <p class="mb-4">
+                    Seu negócio pode ter um site como este,
+                    integrado ao mapa de serviços de ${city.cidade}.
+                </p>
+                <a href="https://wa.me/${business.whatsapp || ''}"
+                   class="btn btn-success btn-lg">
+                   Quero meu site
+                </a>
+            </section>
+        </div>
+    `;
+
+    console.log('[siteRenderer] site MODAL renderizado:', business.slug);
 }
+
 
 eventBus.on('business:data', (payload) => {
     console.log('[siteRenderer] business:data recebido', payload);
 
-    //if (payload.source === 'url') {
-    //    renderFullSite(payload);
-    //} else {
-    //    renderModalSite(payload);
-    //}
     if (payload.source === 'domain') {
         renderFullSite(payload);
     } else {
-        renderModalSite(payload);
+        eventBus.emit('site:render', {
+            target: 'modal',
+            ...payload
+        });
     }
+});
 
+eventBus.on('site:render', ({ target, city, business }) => {
+    if (target === 'modal') {
+        renderModalSite({ city, business });
+    }
 });
