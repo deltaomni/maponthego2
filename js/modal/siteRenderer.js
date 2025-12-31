@@ -1,6 +1,7 @@
 import { eventBus } from '../core/eventBus.js';
 
 function renderFullSite({ city, business }) {
+
     const root = document.getElementById('business-root');
     if (!root) return;
 
