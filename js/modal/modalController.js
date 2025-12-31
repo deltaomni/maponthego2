@@ -17,7 +17,7 @@ function ensureModal() {
                         <button type="button" class="btn-close"></button>
                     </div>
                     <div class="modal-body p-0">
-                        <div id="modal-site-root"></div>
+                        <div id="business-root"></div>
                     </div>
                 </div>
             </div>
