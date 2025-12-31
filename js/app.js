@@ -56,18 +56,7 @@ eventBus.on('business:data', ({ source, city, business }) => {
                 console.warn('modal-site-root ainda não existe');
                 return;
             }
-            
-            //container.innerHTML = business.premium
-            //    ? '<h1 style="font-size:48px">EU SOU SITE PREMIUM</h1>'
-            //    : '<h1 style="font-size:48px">EU SOU WEBSITE EXTERNO</h1>';
 
-           // container.innerHTML = renderPremiumSite()
-        //        ? '<h1 style="font-size:48px">EU SOU SITE PREMIUM</h1>'
-            //        : '<h1 style="font-size:48px">EU SOU WEBSITE EXTERNO</h1>';
-          
-            //if (!window.__MOTG_CONTEXT__) {
-            //    initBusinessStore();
-            //}
             const isPremium = business.premium === true;
             console.log(window.__MOTG_CONTEXT__, isPremium)
             console.log(source, city, business);
@@ -79,16 +68,7 @@ eventBus.on('business:data', ({ source, city, business }) => {
                 container
             });
 
-            //container.innerHTML = isPremium
-            //    ? '<h1 style="font-size:48px">EU SOU SITE PREMIUM 1</h1>'
-            //    : '<h1 style="font-size:48px">EU SOU WEBSITE EXTERNO 1</h1>';
-
-           // renderPremiumSite({ city, business, container });
-           // window.__MOTG_CONTEXT__ = true;
         });
     }
 
 });
-
-// depois de tudo registrado
-//initBusinessStore();
