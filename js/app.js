@@ -57,10 +57,9 @@ eventBus.on('business:data', ({ source, city, business }) => {
                 return;
             }
 
-            console.log("[template] render site via URL");
-        //    container.innerHTML = business.premium
-        //        ? '<h1 style="font-size:48px">EU SOU SITE PREMIUM</h1>'
-        //        : '<h1 style="font-size:48px">EU SOU WEBSITE EXTERNO</h1>';
+            container.innerHTML = business.premium
+                ? '<h1 style="font-size:48px">EU SOU SITE PREMIUM</h1>'
+                : '<h1 style="font-size:48px">EU SOU WEBSITE EXTERNO</h1>';
         });
     }
 
@@ -68,8 +67,4 @@ eventBus.on('business:data', ({ source, city, business }) => {
 
 
 // depois de tudo registrado
-// depois de tudo registrado
-if (!window.__MOTG_CONTEXT__) {
-    initBusinessStore();
-}
-
+initBusinessStore();
