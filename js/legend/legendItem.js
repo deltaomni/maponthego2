@@ -1,4 +1,3 @@
-
 import { eventBus } from '../core/eventBus.js';
 import { openSiteModal } from '../modal/modalController.js';
 import { renderPremiumSite } from '../modal/siteRenderer.js';
@@ -64,6 +63,7 @@ function buildLegendItem(n) {
 //    }
 //});
 
+document.addEventListener('click', (e) => {
 if (!isPremium) {
     container.innerHTML =
         '<h1 style="font-size:48px">EU SOU WEBSITE EXTERNO</h1>';
@@ -102,7 +102,7 @@ renderPremiumSite({
     business,
     container
 });
-
+});
 
 export function hydrateLegendItems(negocios) {
 
