@@ -114,7 +114,7 @@ export async function renderPremiumSite({ city, business, container }) {
     // carrega a máscara
     const res = await fetch('/negocio/index.html');
     const html = await res.text();
-
+    console.log(html);
     // injeta a máscara no modal
     container.innerHTML = html;
 
