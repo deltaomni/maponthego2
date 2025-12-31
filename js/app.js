@@ -19,17 +19,6 @@ import { openSiteModal } from './modal/modalController.js';
 import { initBusinessStore } from './core/businessStore.js';
 
 
-//function openBusinessWebsite(business, city) {
-//    openSiteModal();
-
-//    if (business.isPremium) {
-//        renderModalSite({ city, business });
-//    } else if (business.website) {
-//        renderExternalSiteInIframe(business.website);
-//    }
-//}
-
-
 eventBus.on('city:loaded', city => {
     initLegend(city);
     initLegendEvents();
@@ -68,9 +57,10 @@ eventBus.on('business:data', ({ source, city, business }) => {
                 return;
             }
 
-            container.innerHTML = business.premium
-                ? '<h1 style="font-size:48px">EU SOU SITE PREMIUM</h1>'
-                : '<h1 style="font-size:48px">EU SOU WEBSITE EXTERNO</h1>';
+            console.log("[template] render site via URL");
+        //    container.innerHTML = business.premium
+        //        ? '<h1 style="font-size:48px">EU SOU SITE PREMIUM</h1>'
+        //        : '<h1 style="font-size:48px">EU SOU WEBSITE EXTERNO</h1>';
         });
     }
 
@@ -78,4 +68,8 @@ eventBus.on('business:data', ({ source, city, business }) => {
 
 
 // depois de tudo registrado
-initBusinessStore();
+// depois de tudo registrado
+if (!window.__MOTG_CONTEXT__) {
+    initBusinessStore();
+}
+
