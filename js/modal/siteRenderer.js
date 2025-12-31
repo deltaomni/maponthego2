@@ -146,4 +146,8 @@ eventBus.on('site:render', ({ target, city, business }) => {
     if (target === 'modal') {
         renderModalSite({ city, business });
     }
+
+    if (target === 'url') {
+        renderModalSite({ city, business });
+    }
 });
