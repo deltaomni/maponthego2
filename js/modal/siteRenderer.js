@@ -144,11 +144,10 @@ eventBus.on('business:data', ({ source, city, business }) => {
 // 🔥 MAPONTHEGO → MODAL
 eventBus.on('site:render', ({ target, city, business }) => {
     if (target === 'modal') {
-        renderPremiumSite({ city, business });
+        renderFullSite({ city, business });
     }
 
     if (target === 'url') {
-        renderPremiumSite({ city, business });
+        renderFullSite({ city, business });
     }
 });
-
