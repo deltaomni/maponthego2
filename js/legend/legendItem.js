@@ -1,5 +1,7 @@
 
 import { eventBus } from '../core/eventBus.js';
+import { openSiteModal } from '../modal/modalController.js';
+
 
 eventBus.on('city:visibilityChanged', updateLegendVisibility);
 
@@ -23,6 +25,19 @@ function buildLegendItem(n) {
 
 </li>`;
 }
+
+document.addEventListener('click', (e) => {
+    const card = e.target.closest('.business-card');
+    if (!card) return;
+
+    openSiteModal();
+    const container = document.getElementById('modal-site-root');
+
+    const isPremium = card.dataset.premium === 'true';
+    container.innerHTML = isPremium
+        ? '<h1 style="font-size:48px">EU SOU SITE PREMIUM</h1>'
+        : '<h1 style="font-size:48px">EU SOU WEBSITE EXTERNO</h1>';
+});
 
 export function hydrateLegendItems(negocios) {
 
