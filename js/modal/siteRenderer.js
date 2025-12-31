@@ -107,7 +107,7 @@ function renderModalSite({ city, business }) {
 }
 
 export async function renderPremiumSite({ city, business, container }) {
-    if (window.__MOTG_CONTEXT__) return false;
+ 
     // limpa o modal
     container.innerHTML = '';
 
@@ -151,3 +151,4 @@ eventBus.on('site:render', ({ target, city, business }) => {
         renderModalSite({ city, business });
     }
 });
+
