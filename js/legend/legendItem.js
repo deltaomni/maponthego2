@@ -82,6 +82,7 @@ document.addEventListener('click', (e) => {
 
     // 🔥 PREMIUM DE VERDADE
     const city = getCity(); // ou equivalente
+    console.log('CITY NO LEGEND ITEM:', city);
     const business = city.negocios.find(
         n => n.slug === card.dataset.id
     );
