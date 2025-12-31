@@ -106,6 +106,33 @@ function renderModalSite({ city, business }) {
     console.log('[siteRenderer] site MODAL renderizado:', business.slug);
 }
 
+export async function renderPremiumSite({ city, business, container }) {
+
+    // limpa o modal
+    container.innerHTML = '';
+
+    // carrega a máscara
+    const res = await fetch('/negocio/index.html');
+    const html = await res.text();
+
+    // injeta a máscara no modal
+    container.innerHTML = html;
+
+    // expõe o contexto ANTES da máscara rodar
+    window.__MOTG_CONTEXT__ = {
+        source: 'modal',
+        city,
+        business
+    };
+
+    // carrega o JS da máscara manualmente
+    const script = document.createElement('script');
+    script.type = 'module';
+    script.src = '/negocio/negocio.js';
+
+    container.appendChild(script);
+}
+
 
 // 🔥 DOMÍNIO PRÓPRIO → SITE COMPLETO
 eventBus.on('business:data', ({ source, city, business }) => {
@@ -120,4 +147,3 @@ eventBus.on('site:render', ({ target, city, business }) => {
         renderModalSite({ city, business });
     }
 });
-
