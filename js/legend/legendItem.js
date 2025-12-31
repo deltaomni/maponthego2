@@ -1,6 +1,6 @@
 import { eventBus } from '../core/eventBus.js';
 import { openSiteModal } from '../modal/modalController.js';
-import { renderPremiumSite } from '../modal/siteRenderer.js';
+import { renderFullWebSite } from '../modal/siteRenderer.js';
 import { getCity } from '../core/cityStore.js'; // ou onde a city está
 
 
@@ -64,51 +64,52 @@ function buildLegendItem(n) {
 //});
 
 document.addEventListener('click', (e) => {
-        const card = e.target.closest('.business-card');
-        if (!card) return;
+    const card = e.target.closest('.business-card');
+    if (!card) return;
 
-        openSiteModal();
-        const container = document.getElementById('modal-site-root');
+    openSiteModal();
+    const container = document.getElementById('modal-site-root');
     const isPremium = card.dataset.premium === 'true';
-if (!isPremium) {
-    container.innerHTML =
-        '<h1 style="font-size:48px">EU SOU WEBSITE EXTERNO</h1>';
-    return;
-}
+    if (!isPremium) {
+        container.innerHTML =
+            '<h1 style="font-size:48px">EU SOU WEBSITE EXTERNO</h1>';
+        return;
+    }
 
-console.log('[LEGEND CLICK] premium detectado');
-console.log('[LEGEND CLICK] container:', container);
-console.log('[LEGEND CLICK] card slug:', card.dataset.id);
+    console.log('[LEGEND CLICK] premium detectado');
+    console.log('[LEGEND CLICK] container:', container);
+    console.log('[LEGEND CLICK] card slug:', card.dataset.id);
 
-// ⚠️ pega a cidade do jeito MAIS BURRO POSSÍVEL (sem abstração)
-   // const city = window.__CITY__;
+    // ⚠️ pega a cidade do jeito MAIS BURRO POSSÍVEL (sem abstração)
+    // const city = window.__CITY__;
     console.log(getCity());
     const city = getCity();
-console.log('[LEGEND CLICK] city:', city);
+    console.log('[LEGEND CLICK] city:', city);
 
-if (!city) {
-    console.error('❌ window.__CITY__ NÃO EXISTE');
-    return;
-}
+    if (!city) {
+        console.error('❌ window.__CITY__ NÃO EXISTE');
+        return;
+    }
 
-const business = city.negocios.find(
-    n => n.slug === card.dataset.id
-);
+    const business = city.negocios.find(
+        n => n.slug === card.dataset.id
+    );
 
-console.log('[LEGEND CLICK] business:', business);
+    console.log('[LEGEND CLICK] business:', business);
 
-if (!business) {
-    console.error('❌ negócio não encontrado');
-    return;
-}
+    if (!business) {
+        console.error('❌ negócio não encontrado');
+        return;
+    }
 
-console.log('[LEGEND CLICK] chamando renderPremiumSite');
+    console.log('[LEGEND CLICK] chamando renderPremiumSite');
 
-renderPremiumSite({
-    city,
-    business,
-    container
-});
+    renderFullWebSite({
+        city,
+        business,
+        container
+    });
+    window.__MOTG_CONTEXT_ = false;
 });
 
 export function hydrateLegendItems(negocios) {
