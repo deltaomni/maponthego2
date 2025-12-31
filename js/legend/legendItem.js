@@ -1,6 +1,8 @@
 
 import { eventBus } from '../core/eventBus.js';
 import { openSiteModal } from '../modal/modalController.js';
+import { renderPremiumSite } from '../modal/siteRenderer.js';
+import { getCity } from '../core/cityStore.js'; // ou onde a city está
 
 
 eventBus.on('city:visibilityChanged', updateLegendVisibility);
@@ -26,6 +28,43 @@ function buildLegendItem(n) {
 </li>`;
 }
 
+//document.addEventListener('click', (e) => {
+//    const card = e.target.closest('.business-card');
+//    if (!card) return;
+
+//    openSiteModal();
+//    const container = document.getElementById('modal-site-root');
+
+//    const isPremium = card.dataset.premium === 'true';
+//    container.innerHTML = isPremium
+//        ? '<h1 style="font-size:48px">EU SOU SITE PREMIUM</h1>'
+//        : '<h1 style="font-size:48px">EU SOU WEBSITE EXTERNO</h1>';
+//});
+
+//document.addEventListener('click', (e) => {
+//    const card = e.target.closest('.business-card');
+//    if (!card) return;
+
+//    openSiteModal();
+//    const container = document.getElementById('modal-site-root');
+
+//    const isPremium = card.dataset.premium === 'true';
+
+//    // ✅ ISSO CONTINUA — NÃO TOCA
+//    container.innerHTML = isPremium
+//        ? '<h1 style="font-size:48px">EU SOU SITE PREMIUM</h1>'
+//        : '<h1 style="font-size:48px">EU SOU WEBSITE EXTERNO</h1>';
+
+//    // 🔥 APENAS ACOPLAMENTO
+//    if (isPremium) {
+//        eventBus.emit('site:render', {
+//            target: 'modal',
+//            slug: card.dataset.id
+//        });
+//    }
+//});
+
+
 document.addEventListener('click', (e) => {
     const card = e.target.closest('.business-card');
     if (!card) return;
@@ -34,9 +73,24 @@ document.addEventListener('click', (e) => {
     const container = document.getElementById('modal-site-root');
 
     const isPremium = card.dataset.premium === 'true';
-    container.innerHTML = isPremium
-        ? '<h1 style="font-size:48px">EU SOU SITE PREMIUM</h1>'
-        : '<h1 style="font-size:48px">EU SOU WEBSITE EXTERNO</h1>';
+
+    if (!isPremium) {
+        container.innerHTML =
+            '<h1 style="font-size:48px">EU SOU WEBSITE EXTERNO</h1>';
+        return;
+    }
+
+    // 🔥 PREMIUM DE VERDADE
+    const city = getCity(); // ou equivalente
+    const business = city.negocios.find(
+        n => n.slug === card.dataset.id
+    );
+
+    renderPremiumSite({
+        city,
+        business,
+        container
+    });
 });
 
 export function hydrateLegendItems(negocios) {
