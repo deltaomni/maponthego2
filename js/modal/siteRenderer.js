@@ -72,6 +72,7 @@ function renderFullSite({ city, business }) {
 }
 
 export function renderFullWebSite({ city, business }) {
+    console.trace()
     console.log(window.__MOTG_CONTEXT_)
     if (!window.__MOTG_CONTEXT_) return false;
     const fullwebsite = renderFullSite({ city, business });
