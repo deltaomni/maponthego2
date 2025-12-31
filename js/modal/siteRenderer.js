@@ -151,4 +151,3 @@ eventBus.on('site:render', ({ target, city, business }) => {
         renderModalSite({ city, business });
     }
 });
-
