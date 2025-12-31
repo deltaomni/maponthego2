@@ -6,14 +6,18 @@ const injectedContext = window.__MOTG_CONTEXT__;
 
 if (injectedContext) {
     const { city, business } = injectedContext;
+
     renderFullWebSite({ city, business });
 
-} else {
-    // 2️⃣ FLUXO NORMAL (domínio próprio / URL direta)
-    import('../js/core/businessStore.js');
+    // 🚫 NÃO escuta eventos se já renderizou
+    console.log('[negocio] render via contexto injetado');
+    return;
 }
 
-// 3️⃣ ESCUTA PADRÃO (continua igual)
+// 2️⃣ FLUXO NORMAL (domínio próprio / URL direta)
+import('../js/core/businessStore.js');
+
+// 3️⃣ ESCUTA PADRÃO
 eventBus.on('business:data', ({ city, business }) => {
     renderFullWebSite({ city, business });
 });
