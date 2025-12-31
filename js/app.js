@@ -18,8 +18,7 @@ import { hydrateLegendItems } from './legend/legendItem.js';
 import { openSiteModal } from './modal/modalController.js';
 import { initBusinessStore } from './core/businessStore.js';
 
-import { renderPremiumSite } from './modal/siteRenderer.js';
-
+import { renderFullWebSite } from './modal/siteRenderer.js';
 
 eventBus.on('city:loaded', city => {
     initLegend(city);
@@ -69,12 +68,20 @@ eventBus.on('business:data', ({ source, city, business }) => {
             //if (!window.__MOTG_CONTEXT__) {
             //    initBusinessStore();
             //}
-            const isPremium = business.premium === 'true';
+            const isPremium = business.premium === true;
             console.log(window.__MOTG_CONTEXT__, isPremium)
-            console.log(source, city, business)
-            container.innerHTML = isPremium
-                ? '<h1 style="font-size:48px">EU SOU SITE PREMIUM 1</h1>'
-                : '<h1 style="font-size:48px">EU SOU WEBSITE EXTERNO 1</h1>';
+            console.log(source, city, business);
+
+            window.__MOTG_CONTEXT_ = true;
+            renderFullWebSite({
+                city,
+                business,
+                container
+            });
+
+            //container.innerHTML = isPremium
+            //    ? '<h1 style="font-size:48px">EU SOU SITE PREMIUM 1</h1>'
+            //    : '<h1 style="font-size:48px">EU SOU WEBSITE EXTERNO 1</h1>';
 
            // renderPremiumSite({ city, business, container });
            // window.__MOTG_CONTEXT__ = true;
