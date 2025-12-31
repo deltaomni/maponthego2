@@ -1,7 +1,7 @@
 import { eventBus } from './eventBus.js';
 
 async function loadCity(citySlug) {
-    const res = await fetch(`./data/cities/${citySlug}.json`);
+    const res = await fetch(`data/cities/${citySlug}.json`);
     if (!res.ok) return null;
     return res.json();
 }
@@ -87,5 +87,6 @@ export async function initBusinessStore() {
 }
 
 initBusinessStore();
+
 
 
