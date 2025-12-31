@@ -76,7 +76,7 @@ export function renderFullWebSite({ city, business }) {
     console.log(window.__MOTG_CONTEXT_)
     if (!window.__MOTG_CONTEXT_) return false;
     const fullwebsite = renderFullSite({ city, business });
-
+    window.__MOTG_CONTEXT_ = false;
 }
 
 function renderModalSite({ city, business }) {
@@ -149,11 +149,11 @@ eventBus.on('business:data', ({ source, city, business }) => {
 eventBus.on('site:render', ({ target, city, business }) => {
     if (target === 'modal') {
         renderFullWebSite({ city, business });
-        window.__MOTG_CONTEXT_ = false
+       
     }
 
     if (target === 'url') {
         renderFullWebSite({ city, business });
-        window.__MOTG_CONTEXT_ = false
+     
     }
 });
