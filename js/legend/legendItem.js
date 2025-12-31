@@ -64,6 +64,11 @@ function buildLegendItem(n) {
 //});
 
 document.addEventListener('click', (e) => {
+        const card = e.target.closest('.business-card');
+        if (!card) return;
+
+        openSiteModal();
+        const container = document.getElementById('modal-site-root');
     const isPremium = card.dataset.premium === 'true';
 if (!isPremium) {
     container.innerHTML =
@@ -76,7 +81,9 @@ console.log('[LEGEND CLICK] container:', container);
 console.log('[LEGEND CLICK] card slug:', card.dataset.id);
 
 // ⚠️ pega a cidade do jeito MAIS BURRO POSSÍVEL (sem abstração)
-const city = window.__CITY__;
+   // const city = window.__CITY__;
+    console.log(getCity());
+    const city = getCity();
 console.log('[LEGEND CLICK] city:', city);
 
 if (!city) {
