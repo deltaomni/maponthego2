@@ -64,35 +64,45 @@ function buildLegendItem(n) {
 //    }
 //});
 
+if (!isPremium) {
+    container.innerHTML =
+        '<h1 style="font-size:48px">EU SOU WEBSITE EXTERNO</h1>';
+    return;
+}
 
-document.addEventListener('click', (e) => {
-    const card = e.target.closest('.business-card');
-    if (!card) return;
+console.log('[LEGEND CLICK] premium detectado');
 
-    openSiteModal();
-    const container = document.getElementById('modal-site-root');
+console.log('[LEGEND CLICK] container:', container);
+console.log('[LEGEND CLICK] card slug:', card.dataset.id);
 
-    const isPremium = card.dataset.premium === 'true';
+// ⚠️ pega a cidade do jeito MAIS BURRO POSSÍVEL (sem abstração)
+const city = window.__CITY__;
+console.log('[LEGEND CLICK] city:', city);
 
-    if (!isPremium) {
-        container.innerHTML =
-            '<h1 style="font-size:48px">EU SOU WEBSITE EXTERNO</h1>';
-        return;
-    }
+if (!city) {
+    console.error('❌ window.__CITY__ NÃO EXISTE');
+    return;
+}
 
-    // 🔥 PREMIUM DE VERDADE
-    const city = getCity(); // ou equivalente
-    console.log('CITY NO LEGEND ITEM:', city);
-    const business = city.negocios.find(
-        n => n.slug === card.dataset.id
-    );
+const business = city.negocios.find(
+    n => n.slug === card.dataset.id
+);
 
-    renderPremiumSite({
-        city,
-        business,
-        container
-    });
+console.log('[LEGEND CLICK] business:', business);
+
+if (!business) {
+    console.error('❌ negócio não encontrado');
+    return;
+}
+
+console.log('[LEGEND CLICK] chamando renderPremiumSite');
+
+renderPremiumSite({
+    city,
+    business,
+    container
 });
+
 
 export function hydrateLegendItems(negocios) {
 
