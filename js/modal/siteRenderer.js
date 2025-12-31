@@ -1,8 +1,9 @@
 import { eventBus } from '../core/eventBus.js';
 
-function renderFullSite({ city, business }) {
+async function renderFullSite({ city, business }) {
 
-    const root = document.getElementById('business-root');
+    const root = await document.getElementById('business-root');
+    console.log(root);
     if (!root) return;
 
     root.innerHTML = `
