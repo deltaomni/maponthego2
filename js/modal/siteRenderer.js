@@ -112,7 +112,7 @@ export async function renderPremiumSite({ city, business, container }) {
     container.innerHTML = '';
 
     // carrega a máscara
-    const res = await fetch('/negocio/index.html');
+    const res = await fetch('negocio/index.html');
     const html = await res.text();
     console.log(html);
     // injeta a máscara no modal
@@ -151,3 +151,4 @@ eventBus.on('site:render', ({ target, city, business }) => {
         renderPremiumSite({ city, business });
     }
 });
+
