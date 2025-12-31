@@ -64,6 +64,7 @@ function buildLegendItem(n) {
 //});
 
 document.addEventListener('click', (e) => {
+    const isPremium = card.dataset.premium === 'true';
 if (!isPremium) {
     container.innerHTML =
         '<h1 style="font-size:48px">EU SOU WEBSITE EXTERNO</h1>';
@@ -71,7 +72,6 @@ if (!isPremium) {
 }
 
 console.log('[LEGEND CLICK] premium detectado');
-
 console.log('[LEGEND CLICK] container:', container);
 console.log('[LEGEND CLICK] card slug:', card.dataset.id);
 
