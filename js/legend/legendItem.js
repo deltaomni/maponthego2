@@ -103,13 +103,13 @@ document.addEventListener('click', (e) => {
     }
 
     console.log('[LEGEND CLICK] chamando renderPremiumSite');
-
+    window.__MOTG_CONTEXT_ = true;
     renderFullWebSite({
         city,
         business,
         container
     });
-    window.__MOTG_CONTEXT_ = false;
+
 });
 
 export function hydrateLegendItems(negocios) {
