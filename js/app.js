@@ -52,7 +52,7 @@ eventBus.on('business:data', ({ source, city, business }) => {
         requestAnimationFrame(() => {
             openSiteModal();
 
-            const container = document.getElementById('modal-site-root');
+            const container = document.getElementById('business-root');
             if (!container) {
                 console.warn('modal-site-root ainda não existe');
                 return;
@@ -76,7 +76,7 @@ eventBus.on('business:data', ({ source, city, business }) => {
                 ? '<h1 style="font-size:48px">EU SOU SITE PREMIUM 1</h1>'
                 : '<h1 style="font-size:48px">EU SOU WEBSITE EXTERNO 1</h1>';
 
-            renderPremiumSite({ city, business, container });
+           // renderPremiumSite({ city, business, container });
            // window.__MOTG_CONTEXT__ = true;
         });
     }
@@ -85,4 +85,3 @@ eventBus.on('business:data', ({ source, city, business }) => {
 
 // depois de tudo registrado
 //initBusinessStore();
-
