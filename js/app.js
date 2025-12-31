@@ -5,7 +5,7 @@ import { isMainDomain } from './core/config.js';
 import './map/mapInit.js';
 import './legend/legendInit.js';
 import './modal/modalController.js';
-import './core/businessStore.js';
+//import './core/businessStore.js';
 
 import { eventBus } from './core/eventBus.js';
 import { initLegend } from './legend/legendInit.js';
@@ -15,6 +15,19 @@ import { renderCategories } from './legend/legendCategories.js';
 import { renderLegendItems } from './legend/legendItem.js';
 import { hydrateLegendItems } from './legend/legendItem.js';
 
+import { openSiteModal } from './modal/modalController.js';
+import { initBusinessStore } from './core/businessStore.js';
+
+
+//function openBusinessWebsite(business, city) {
+//    openSiteModal();
+
+//    if (business.isPremium) {
+//        renderModalSite({ city, business });
+//    } else if (business.website) {
+//        renderExternalSiteInIframe(business.website);
+//    }
+//}
 
 
 eventBus.on('city:loaded', city => {
@@ -42,3 +55,27 @@ eventBus.on('city:loaded', city => {
 
     await initCityStore();
 })();
+
+eventBus.on('business:data', ({ source, city, business }) => {
+
+    if (source === 'url') {
+        requestAnimationFrame(() => {
+            openSiteModal();
+
+            const container = document.getElementById('modal-site-root');
+            if (!container) {
+                console.warn('modal-site-root ainda não existe');
+                return;
+            }
+
+            container.innerHTML = business.premium
+                ? '<h1 style="font-size:48px">EU SOU SITE PREMIUM</h1>'
+                : '<h1 style="font-size:48px">EU SOU WEBSITE EXTERNO</h1>';
+        });
+    }
+
+});
+
+
+// depois de tudo registrado
+initBusinessStore();
