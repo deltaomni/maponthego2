@@ -1,7 +1,7 @@
 import { eventBus } from './eventBus.js';
 
 async function loadCity(citySlug) {
-    const res = await fetch(`/data/cities/${citySlug}.json`);
+    const res = await fetch(`data/cities/${citySlug}.json`);
     if (!res.ok) return null;
     return res.json();
 }
@@ -39,8 +39,12 @@ export async function initBusinessStore() {
     let context = null;
     let source = null;
 
-    // 🌐 PRIORIDADE 1: domínio do cliente
-    if (!location.hostname.includes('maponthego.com')) {
+    // PRIORIDADE 1: domínio de cliente (SEM parâmetros)
+    if (
+        !location.hostname.includes('maponthego.com') &&
+        location.hostname !== 'localhost' &&
+        !location.search.includes('city=')
+    ) {
         context = await resolveFromDomain();
         source = 'domain';
     }
