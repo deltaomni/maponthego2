@@ -18,6 +18,8 @@ import { hydrateLegendItems } from './legend/legendItem.js';
 import { openSiteModal } from './modal/modalController.js';
 import { initBusinessStore } from './core/businessStore.js';
 
+import { renderPremiumSite } from './modal/siteRenderer.js';
+
 
 eventBus.on('city:loaded', city => {
     initLegend(city);
@@ -46,7 +48,6 @@ eventBus.on('city:loaded', city => {
 })();
 
 eventBus.on('business:data', ({ source, city, business }) => {
-
     if (source === 'url') {
         requestAnimationFrame(() => {
             openSiteModal();
@@ -56,15 +57,31 @@ eventBus.on('business:data', ({ source, city, business }) => {
                 console.warn('modal-site-root ainda não existe');
                 return;
             }
+            
+            //container.innerHTML = business.premium
+            //    ? '<h1 style="font-size:48px">EU SOU SITE PREMIUM</h1>'
+            //    : '<h1 style="font-size:48px">EU SOU WEBSITE EXTERNO</h1>';
 
-            container.innerHTML = business.premium
-                ? '<h1 style="font-size:48px">EU SOU SITE PREMIUM</h1>'
-                : '<h1 style="font-size:48px">EU SOU WEBSITE EXTERNO</h1>';
+           // container.innerHTML = renderPremiumSite()
+        //        ? '<h1 style="font-size:48px">EU SOU SITE PREMIUM</h1>'
+            //        : '<h1 style="font-size:48px">EU SOU WEBSITE EXTERNO</h1>';
+          
+            //if (!window.__MOTG_CONTEXT__) {
+            //    initBusinessStore();
+            //}
+            const isPremium = business.premium === 'true';
+            console.log(window.__MOTG_CONTEXT__, isPremium)
+            console.log(source, city, business)
+            container.innerHTML = isPremium
+                ? '<h1 style="font-size:48px">EU SOU SITE PREMIUM 1</h1>'
+                : '<h1 style="font-size:48px">EU SOU WEBSITE EXTERNO 1</h1>';
+
+            renderPremiumSite({ city, business, container });
+            window.__MOTG_CONTEXT__ = true;
         });
     }
 
 });
 
-
 // depois de tudo registrado
-initBusinessStore();
+//initBusinessStore();
